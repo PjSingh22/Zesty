@@ -32,7 +32,7 @@ def upgrade():
     # ### end Alembic commands ###
 
     if environment == "production":
-        op.execute(f"ALTER TABLE listing_images SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE listing_image SET SCHEMA {SCHEMA};")
 
 
 def downgrade():
