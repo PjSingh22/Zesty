@@ -13,6 +13,7 @@ class Listing(db.Model):
     description = db.Column(db.String(255), nullable=False)
 
     user = db.relationship('User', back_populates='listings')
+    images = db.relationship('ListingImage', back_populates='listing')
 
     def to_dict(self):
         return {
