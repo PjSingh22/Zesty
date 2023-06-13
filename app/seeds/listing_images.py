@@ -61,8 +61,8 @@ def seed_listing_images():
 
 def undo_listing_images():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.listing_images RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.listing_image RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM listing_images"))
+        db.session.execute(text("DELETE FROM listing_image"))
 
     db.session.commit()
