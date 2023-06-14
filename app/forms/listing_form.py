@@ -6,7 +6,7 @@ from app.models import Listing
 from ..api.AWS_helpers import ALLOWED_EXTENSIONS
 
 class ListingForm(FlaskForm):
-    title = StringField('title', validators=[DataRequired()])
+    name = StringField('name', validators=[DataRequired()])
     price = FloatField('price', validators=[DataRequired()])
     description = StringField('description', validators=[DataRequired()])
-    images = MultipleFileField('Upload Images', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))], render_kw={'multiple': True})
+    images = MultipleFileField('Upload Images', validators=[FileAllowed(list(ALLOWED_EXTENSIONS))], render_kw={'multiple': True})

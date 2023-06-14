@@ -7,7 +7,20 @@ const createListing = (listing) => ({
 
 
 export const createListingThunk = (listing) => async dispatch => {
-  console.log("listing", listing);
+  const res = await fetch('/api/listings/new', {
+    method: "POST",
+    body: listing
+  })
+
+  if (res.ok) {
+    let data = res.json()
+    await dispatch(createListing(data))
+    return data
+  }
+
+  if (res.errors) {
+    return res
+  }
 }
 
 const initialState = { listings: {} }
