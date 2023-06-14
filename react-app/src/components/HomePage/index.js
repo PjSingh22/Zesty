@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllListingsThunk } from "../../store/listings";
 import ListingCard from "../ListingCard";
+import "./homepage.css"
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -15,10 +16,12 @@ function HomePage() {
 
   if (!listings) return <p>wtf</p>
   return (
-    <>
+    <div className="home-page">
       <h1>Home Page</h1>
-      {listingsArr.map(listing => <ListingCard listing={listing} />)}
-    </>
+      <div className="home-page__listings">
+        {listingsArr.map(listing => <ListingCard listing={listing} />)}
+      </div>
+    </div>
   )
 }
 

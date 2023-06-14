@@ -9,12 +9,13 @@ listing_route = Blueprint('listings', __name__)
 @listing_route.route("/")
 def listings():
     listings = Listing.query.all()
-
     listings_list = []
     for listing in listings:
         images = listing.images
         list_item = listing.to_dict()
-
+        owner = User.query.get(list_item["userId"])
+        # print("========LIST ITEM========", owner)
+        list_item["owner"] = owner.to_dict()
         list_item["images"] = [image.to_dict() for image in images]
         listings_list.append(list_item)
 
