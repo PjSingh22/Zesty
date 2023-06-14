@@ -89,6 +89,18 @@ def seed_listing_images():
       listing_id= 10,
       image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118387590270292089/Kewpie_JapaneseMayonnaise_003_600x.webp"
     ),
+    ListingImage(
+      listing_id= 11,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118554800590688278/BG10845_OhyamaFoodsYuzuHotSauce_001_Package_0b1163ed-a371-438a-b245-3d7dae24b5f7_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 12,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118559682106236998/BG11141-Japanese-Ramen-Hot-MisoBokksu221090_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 12,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118559682500493342/BG11141JapaneseRamenHotMisoBokksu221092_600x.webp"
+    ),
   ]
 
    for image in listing_images:

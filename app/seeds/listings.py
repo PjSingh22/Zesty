@@ -60,11 +60,24 @@ def seed_listings():
        price=2.99,
        description="Qoo Orange is one of the most recognizable beverages in Japan, with its adorable cat mascot and secure spot in popular culture backed up by its maker, Coca-Cola. Containing 20% juice with no preservatives, this Japanese answer to Hi-C is a great alternative for soda for kids, especially. Non-carbonated, it's great for rehydration and just plain tastes good, so make sure you've got enough on hand for everyone!"
     ),
+    # Listing 10
     Listing(
        name="Kewpie Japanese Mayonnaise: Original Tube",
        user_id=2,
        price=8.99,
        description="This is the iconic and beloved “Kewpie” mayo, easily recognized for its signature Kewpie baby doll design! What makes this mayo special is not only its artwork: this Japanese mayo is ultra-smooth and contains multiple vinegars that provide a complex umami flavor. Its packaging should also be noted for how truly easy it is to squeeze: you won't lose a dollop of this super tasty mayo!"
+    ),
+    Listing(
+       name="Bokksu Yuzu Hot Sauce",
+       user_id=3,
+       price=8.99,
+       description="You won't need to ask-o for the Tobasco with this yuzu hot sauce in your condiment arsenal. Like any good hot sauce, this bottle packs a lot of flavors and complex heat! It's made with zesty yuzu kosho, a paste of fermented yuzu peel and pepper, to create a spicy and tangy that's hard to beat."
+    ),
+    Listing(
+       name="Hikari Menraku Ramen Bowl: Flaming Hot Miso",
+       user_id=3,
+       price=4.25,
+       description="Like the classics but looking for a little spice? Try this Flaming Hot Miso ramen! It boasts a classic creamy and full-bodied miso broth accented with hot chilis. This instant ramen also includes tofu and vegetables, so it's a full meal you can enjoy in just minutes!"
     ),
   ]
 

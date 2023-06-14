@@ -1,12 +1,11 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db, Listing, ListingImage
-from app.forms import LoginForm
-from app.forms import SignUpForm
+from app.forms import ListingForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 listing_route = Blueprint('listings', __name__)
 
-@listing_route.route("/all")
+@listing_route.route("/")
 def listings():
     listings = Listing.query.all()
 
@@ -21,8 +20,20 @@ def listings():
     return listings_list
 
 
+@listing_route.route("/create")
+def create_listing():
+    listingForm = ListingForm()
+    listingForm['csrf_token'].data = request.cookies['csrf_token']
+    listing = {}
 
+    err_obj = {}
 
+    if listingForm.validate_on_submit():
+        listing_data = listingForm.data
+
+        print(listing_data)
+
+    return {"message": "success!"}
 
 
     # listings_list = []
