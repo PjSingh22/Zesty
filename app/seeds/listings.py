@@ -34,7 +34,38 @@ def seed_listings():
        user_id=3,
        price=8.99,
        description="The fantastic thing about Japanese Kit Kats is that they will taste just like their namesake, not just a whisper of artificial flavor coming from the other room. Take this limited edition cheesecake flavor - the smooth white chocolate cheesecake coating is not only sweet but has that subtle tanginess that all good cheesecakes boast. You need to taste it to believe it! Only available in Japan, each package contains 9 mini KitKat bars!"
-    )
+    ),
+    Listing(
+       name="Kubota Daifuku Mochi: Strawberry",
+       user_id=3,
+       price=5.49,
+       description="For fans of Asian sweets, one constant frustration is the difficulty of accessing the more eat-it-ASAP, texture-sensitive goods. Well, this mochi is the real deal, and it can be delivered to you fresh! These mochi are a mix of traditional and 21st century: stuffed with creamy red bean paste, flavored with strawberry."
+    ),
+    # listing 7
+    Listing(
+       name="Kubota Daifuku Mochi: Black Sesame",
+       user_id=1,
+       price=5.49,
+       description="Classic mochi is great but why stop there? Meet daifuku mochi - all the chewiness you love, but now encasing a delicious filling for an extra flavorful step. This sesame-flavored daifuku mochi is perfect for those who are craving something nutty and mildly sweet."
+    ),
+    Listing(
+       name="Itoen Oi Ocha Green Tea",
+       user_id=1,
+       price=2.75,
+       description="Those looking for a drink to freshen up the mind, body, and soul may find that Oi Ocha Green Tea does the trick! This unsweetened, zero calorie, and lightly caffeinated bottle comes from Ito En, Japan’s Number One green tea brand. Green tea newcomers, take note: ocha is not matcha: it’s thinner, less bitter, and lower in caffeine."
+    ),
+    Listing(
+       name="Coca Cola Qoo: Orange",
+       user_id=2,
+       price=2.99,
+       description="Qoo Orange is one of the most recognizable beverages in Japan, with its adorable cat mascot and secure spot in popular culture backed up by its maker, Coca-Cola. Containing 20% juice with no preservatives, this Japanese answer to Hi-C is a great alternative for soda for kids, especially. Non-carbonated, it's great for rehydration and just plain tastes good, so make sure you've got enough on hand for everyone!"
+    ),
+    Listing(
+       name="Kewpie Japanese Mayonnaise: Original Tube",
+       user_id=2,
+       price=8.99,
+       description="This is the iconic and beloved “Kewpie” mayo, easily recognized for its signature Kewpie baby doll design! What makes this mayo special is not only its artwork: this Japanese mayo is ultra-smooth and contains multiple vinegars that provide a complex umami flavor. Its packaging should also be noted for how truly easy it is to squeeze: you won't lose a dollop of this super tasty mayo!"
+    ),
   ]
 
    for listing in listings:

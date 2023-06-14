@@ -49,6 +49,46 @@ def seed_listing_images():
       listing_id= 5,
       image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118293768098033724/BG10838_KitKatCheesecake_003_600x.webp"
     ),
+    ListingImage(
+      listing_id= 6,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118382610352181328/BG10053StrawberryDaifukuMochi_f94108f1-9cd2-47d2-b395-c5448255a323_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 6,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118382610712907776/BG10053_StrawberryDaifukuMochi_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 7,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118383163220164648/BG10534_Daifuku-Mochi-Sesame_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 7,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118383163660582973/BG10534_Daifuku-Mochi-Sesame0208_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 8,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118383756634493028/BG10001OiOchaGreenTea_c004fde1-394a-4eeb-a5a5-5b422e23f50d_800x.webp"
+    ),
+    ListingImage(
+      listing_id= 8,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118383757116850216/BG10001-UNsweetened-Green-TeaBokksu9018_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 9,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118386261569310813/BG10147QooOrange_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 9,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118386262060060762/QooOrange_Nutrition_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 10,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118387589884420116/BG10098JapaneseMayonnaiseOriginalTube_Package_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 10,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118387590270292089/Kewpie_JapaneseMayonnaise_003_600x.webp"
+    ),
   ]
 
    for image in listing_images:
