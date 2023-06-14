@@ -10,7 +10,7 @@ class Listing(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     name = db.Column(db.String(255), nullable=False)
     price = db.Column(db.Float(2), nullable=False)
-    description = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(2000), nullable=False)
 
     user = db.relationship('User', back_populates='listings')
     images = db.relationship('ListingImage', back_populates='listing')
