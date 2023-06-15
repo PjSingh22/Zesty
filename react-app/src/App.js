@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import NewListingForm from "./components/NewListingForm";
 import EditListing from "./components/EditListing";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,9 +25,12 @@ function App() {
           <Route exact path='/'>
             <HomePage />
           </Route>
-          <Route path="/listings/new">
+          <ProtectedRoute path="/listings/new">
             <NewListingForm />
-          </Route>
+          </ProtectedRoute>
+          {/* <Route path="/listings/new">
+            <NewListingForm />
+          </Route> */}
           <Route path="/listings/:id">
             <EditListing />
           </Route>
