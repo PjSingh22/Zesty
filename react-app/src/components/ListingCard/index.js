@@ -30,7 +30,6 @@ function ListingCard({ listing }) {
             onItemClick={closeModal}
             modalComponent={<DeleteListingModal listing={listing} id={id} />}
           />
-          {/* <button onClick={() => dispatch(deleteListingThunk(listing, id))}>Delete</button> */}
         </>
       ) : null : null}
     </div>

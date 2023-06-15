@@ -16,14 +16,12 @@ function DeleteListingModal({ listing, id }) {
   return (
     <div>
       <h1>Delete this listing?</h1>
-      <div>
-        {loading ? <p>deleting...</p> : (
-          <>
-            <button onClick={closeModal}>Cancel</button>
-            <button onClick={handleDelete}>Yes</button>
-          </>
-        )}
-      </div>
+      {loading ? <p>deleting...</p> : (
+        <div>
+          <button onClick={closeModal}>Cancel</button>
+          <button onClick={handleDelete}>Yes</button>
+        </div>
+      )}
     </div>
   )
 }

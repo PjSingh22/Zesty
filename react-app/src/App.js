@@ -38,7 +38,7 @@ function App() {
             <LoginFormPage />
           </Route>
           <Route path="/signup">
-            <SignupFormPage />
+            <h1>Use the modal, that's what it's there for.</h1>
           </Route>
         </Switch>
       )}
