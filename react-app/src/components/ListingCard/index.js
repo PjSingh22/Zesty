@@ -5,7 +5,7 @@ import "./listingcard.css";
 function ListingCard({ listing }) {
   const { images, name, price, description, owner, id } = listing;
   const user = useSelector(state => state.session.user);
-  const firstImage = images[0].image_url ? images[0].image_url : "https://silverhillsbakery.ca/wp-content/uploads/2019/02/SHB_Canada-FoodGuide_1200x800_BLOG-1200x800-c-default.jpg";
+  const firstImage = images.length !== 0 ? images[0].imageUrl : "https://silverhillsbakery.ca/wp-content/uploads/2019/02/SHB_Canada-FoodGuide_1200x800_BLOG-1200x800-c-default.jpg";
 
   return (
     <div className="listing-card-container">
