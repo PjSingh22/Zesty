@@ -22,13 +22,19 @@ function NewListingForm() {
     setLoading(false);
   }
 
+  console.log("a                 ".trim().length)
+
+  const hasWhiteSpace = (input) => {
+    return /\s/g.test(input);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errObj = {}
 
+    if (prodName.trim().length < 3) errObj["prodName"] = "Title needs a min of 3 characters"
+    if (prodDesc.trim().length < 10) errObj["prodDesc"] = "Description needs a min of 10 characters"
     if(prodImages.length === 0) errObj["images"] = "At least 1 image is required";
-
-    if (prodDesc.length < 10) errObj["prodDesc"] = "description needs to be at least 10 characters long"
 
     if (Object.values(errObj).length > 0) {
       setErrors(errObj)

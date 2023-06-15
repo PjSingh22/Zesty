@@ -33,8 +33,9 @@ function EditListing() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errObj = {}
-    if (listDesc.length < 10) errObj["listDesc"] = "description needs to be at least 10 characters long";
-    if (listName.length < 3) errObj["listName"] = "Title cannot be empty or less than 3 characters";
+
+    if (listDesc.trim().length < 10) errObj["listDesc"] = "Description needs to be at least 10 characters long";
+    if (listName.trim().length < 3) errObj["listName"] = "Title cannot be empty or less than 3 characters";
 
     if (Object.values(errObj).length > 0) {
       setErrors(errObj)
