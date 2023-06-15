@@ -1,5 +1,17 @@
-const GET_LISTINGS = "listings/all"
-const CREATE_LISTING = "listings/createListing"
+const GET_LISTINGS = "listings/all";
+const CREATE_LISTING = "listings/createListing";
+const GET_SINGLE_LISTING = "listings/singleListing";
+const EDIT_LISTING = "listings/editListing";
+
+const editListing = (listing) => ({
+  type: EDIT_LISTING,
+  payload: listing
+});
+
+const getSingleListing = (listing) => ({
+  type: GET_SINGLE_LISTING,
+  payload: listing
+});
 
 const getAllListings = (listings) => ({
   type: GET_LISTINGS,
@@ -10,6 +22,21 @@ const createListing = (listing) => ({
   type: CREATE_LISTING,
   payload: listing
 });
+
+export const getSingleListingThunk = (id) => async dispatch => {
+  const res = await fetch(`/api/listings/${id}`)
+
+  if (res.ok) {
+    const data = await res.json();
+    await dispatch(getSingleListing(data))
+    return data
+  }
+
+  if (res.errors) {
+    const errors = await res.json();
+    return errors;
+  }
+};
 
 
 export const getAllListingsThunk = () => async dispatch => {
@@ -26,9 +53,10 @@ export const getAllListingsThunk = () => async dispatch => {
   }
 
   if (res.errors) {
-    return res
+    let errors = await res.json()
+    return errors
   }
-}
+};
 
 
 export const createListingThunk = (listing) => async dispatch => {
@@ -47,9 +75,9 @@ export const createListingThunk = (listing) => async dispatch => {
   if (res.errors) {
     return res
   }
-}
+};
 
-const initialState = { listings: {}, singleListing: {} }
+const initialState = { listings: {}, singleListing: {} };
 
 const listingReducer = (state = initialState, action) => {
   switch(action.type) {
@@ -57,10 +85,14 @@ const listingReducer = (state = initialState, action) => {
       const allListings = { listings: {} }
       action.payload.forEach(listing => allListings.listings[listing.id] = listing);
       return allListings;
+    case GET_SINGLE_LISTING:
+      const singleListingState = { ...state, singleListing: {} }
+      singleListingState.singleListing = {...action.payload}
+      return singleListingState;
     default:
       return state
   }
-}
+};
 
 
 export default listingReducer
