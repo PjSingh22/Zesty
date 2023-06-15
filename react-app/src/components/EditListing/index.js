@@ -12,6 +12,8 @@ function EditListing() {
   const [listName, setListName] = useState("");
   const [listPrice, setListPrice] = useState("");
   const [listDesc, setListDesc] = useState("");
+  const [errors, setErrors] = useState({})
+  const [loading, setLoading] = useState(false)
 
 
   useEffect(() => {
@@ -30,7 +32,16 @@ function EditListing() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errObj = {}
+    if (listDesc.length < 10) errObj["listDesc"] = "description needs to be at least 10 characters long";
+    if (listName.length < 3) errObj["listName"] = "Title cannot be empty or less than 3 characters";
 
+    if (Object.values(errObj).length > 0) {
+      setErrors(errObj)
+      return
+    }
+
+    setLoading(true)
     const updatedListing ={
       "name": listName,
       "price": listPrice,
@@ -48,19 +59,24 @@ function EditListing() {
       <h2>Edit Listing</h2>
       <div>
         <form onSubmit={handleSubmit}>
+        <ul>
+          {Object.values(errors).map((error, idx) => (
+            <li style={{color: "red"}} key={idx}>{error}</li>
+          ))}
+        </ul>
           <label>
             Title
-            <input type="text" value={listName} onChange={(e) => setListName(e.target.value)}/>
+            <input type="text" minLength={3} maxLength={50} value={listName} onChange={(e) => setListName(e.target.value)}/>
           </label>
           <label>
             Price
-            <input type="number" value={listPrice} onChange={(e) => setListPrice(e.target.value)} />
+            <input type="number" step="0.01" min={1} value={listPrice} onChange={(e) => setListPrice(e.target.value)} />
           </label>
           <label>
             Description
             <textarea type="text" value={listDesc} onChange={(e) => setListDesc(e.target.value)} />
           </label>
-          <button type="submit">Edit Post</button>
+          {loading ? <button disabled>posting...</button> : <button type="submit">Edit Post</button>}
         </form>
       </div>
     </>

@@ -13,8 +13,30 @@ function SignupFormModal() {
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
+  const isEmail = (email) => {
+    return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
+  }
+
+  const hasWhiteSpace = (input) => {
+    return /\s/g.test(input);
+  }
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+    const errObj = {}
+
+    if(!isEmail(email)) {
+      errObj["email"] = "Please provide a valid email"
+    }
+
+    if (hasWhiteSpace(username)) errObj["username"] = "username cannot contain spaces";
+
+    if (hasWhiteSpace(password)) errObj["password"] = "password cannot contain spaces";
+
+    if(Object.values(errObj).length > 0){
+      setErrors(errObj)
+      return
+    };
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password));
 			if (data) {
@@ -34,14 +56,14 @@ function SignupFormModal() {
 			<h1>Sign Up</h1>
 			<form onSubmit={handleSubmit}>
 				<ul>
-					{errors.map((error, idx) => (
-						<li key={idx}>{error}</li>
+					{Object.values(errors).map((error, idx) => (
+						<li style={{color: "red"}} key={idx}>{error}</li>
 					))}
 				</ul>
 				<label>
 					Email
 					<input
-						type="text"
+						type="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
@@ -51,6 +73,8 @@ function SignupFormModal() {
 					Username
 					<input
 						type="text"
+            minLength={6}
+            maxLength={30}
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 						required
@@ -61,6 +85,8 @@ function SignupFormModal() {
 					<input
 						type="password"
 						value={password}
+            minLength={6}
+            maxLength={30}
 						onChange={(e) => setPassword(e.target.value)}
 						required
 					/>
@@ -69,6 +95,8 @@ function SignupFormModal() {
 					Confirm Password
 					<input
 						type="password"
+            minLength={6}
+            maxLength={30}
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
