@@ -23,6 +23,25 @@ const createListing = (listing) => ({
   payload: listing
 });
 
+export const editListingThunk = (listing, id) => async dispatch => {
+  const res = await fetch(`/api/listings/${id}`, {
+    method: "PUT",
+    headers: {"Content-Type": "application/json" },
+    body: JSON.stringify(listing)
+  });
+
+  if (res.ok) {
+    const updatedListing = await res.json();
+    await dispatch(editListing(updatedListing))
+    return updatedListing
+  }
+
+  if (res.errors) {
+    let errors = await res.json();
+    return errors
+  }
+}
+
 export const getSingleListingThunk = (id) => async dispatch => {
   const res = await fetch(`/api/listings/${id}`)
 
