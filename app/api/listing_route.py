@@ -30,7 +30,6 @@ def create_listing():
     listing = {}
 
     err_obj = {}
-    # print("--------------", listingForm.data)
     if listing_form.validate_on_submit():
         new_listing = Listing(
             name = listing_form.data["name"],
@@ -47,7 +46,8 @@ def create_listing():
         for image in listing_form.data["images"]:
           image.filename = get_unique_filename(image.filename)
           upload = upload_file_to_s3(image)
-
+          if not upload:
+              err_obj["error"] = f"error happened {upload}"
           new_image = ListingImage(
               listing_id = listing["id"],
               image_url = upload["url"]
@@ -58,9 +58,8 @@ def create_listing():
 
           image_dict = new_image.to_dict()
           listing["images"].append(image_dict)
-
+    print("--------ERROR---------", err_obj.error)
     if listing_form.errors:
-        print("=======ERRORS=======", listing_form.errors);
         return { "errors": listing_form.errors }
 
     return listing
