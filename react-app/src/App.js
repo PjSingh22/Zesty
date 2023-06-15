@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import NewListingForm from "./components/NewListingForm";
+import EditListing from "./components/EditListing";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/listings/new">
             <NewListingForm />
+          </Route>
+          <Route path="/listings/:id">
+            <EditListing />
           </Route>
           <Route path="/login" >
             <LoginFormPage />

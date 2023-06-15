@@ -1,15 +1,25 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createListingThunk } from "../../store/listings";
+import { useHistory } from "react-router-dom";
 
 function NewListingForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [prodName, setProdName] = useState("");
   const [prodPrice, setProdPrice] = useState("");
   const [prodDesc, setProdDesc] = useState("");
   const [prodImages, setProdImages] = useState([]);
   const [errors, setErrors] = useState("");
   // TODO: add error handlers
+
+  const clearInputs = () => {
+    setProdDesc("");
+    setProdImages([]);
+    setProdName("");
+    setProdPrice("");
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(prodName, prodPrice, prodDesc, prodImages);
@@ -22,18 +32,15 @@ function NewListingForm() {
       listingFormData.append('images', image);
     }
 
-    for (let key of listingFormData.entries()) {
-      console.log(key[0],':', key[1])
-    }
+    await dispatch(createListingThunk(listingFormData))
 
-    console.log("FORM DATA", listingFormData)
-    let res = await dispatch(createListingThunk(listingFormData))
+    // if (res.errors !== undefined) {
+    //   setErrors(res.errors)
+    //   return
+    // }
 
-    if (res.errors) {
-      setErrors(res.errors)
-      console.log(errors)
-    }
-
+    clearInputs();
+    history.push("/")
   }
 
   const handleImageChange = (e) => {

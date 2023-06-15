@@ -5,3 +5,7 @@
 .hidden {
   display: none;
 }
+
+.nav-bar {
+  border: 1px solid red;
+}

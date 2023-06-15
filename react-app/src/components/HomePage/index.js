@@ -17,7 +17,6 @@ function HomePage() {
   if (!listings) return <p>wtf</p>
   return (
     <div className="home-page">
-      <h1>Home Page</h1>
       <div className="home-page__listings">
         {listingsArr.map(listing => <ListingCard listing={listing} />)}
       </div>

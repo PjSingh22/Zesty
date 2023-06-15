@@ -39,9 +39,10 @@ export const createListingThunk = (listing) => async dispatch => {
   })
 
   if (res.ok) {
-    let data = res.json()
+    let data = await res.json()
+    console.log("DATA RES", data);
     await dispatch(createListing(data))
-    return data
+    return {"message": "success!"}
   }
 
   if (res.errors) {
