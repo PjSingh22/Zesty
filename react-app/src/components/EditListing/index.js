@@ -13,7 +13,6 @@ function EditListing() {
   const [listPrice, setListPrice] = useState("");
   const [listDesc, setListDesc] = useState("");
 
-  console.log(listing)
 
   useEffect(() => {
     dispatch(getSingleListingThunk(id))

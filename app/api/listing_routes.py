@@ -94,3 +94,15 @@ def update_listing(id):
         return listing.to_dict()
     if form.errors:
         return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+@listing_routes.route('/<int:id>', methods=["DELETE"])
+def delete_listing(id):
+    listing = Listing.query.get(id)
+
+    listing_images = [listing.image.to_dict() for listing.image in listing.images]
+
+    [remove_file_from_s3(listing_image["imageUrl"]) for listing_image in listing_images]
+
+    db.session.delete(listing)
+    db.session.commit()
+    return {"message": "Listing successfully deleted"}

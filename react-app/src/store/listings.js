@@ -2,6 +2,12 @@ const GET_LISTINGS = "listings/all";
 const CREATE_LISTING = "listings/createListing";
 const GET_SINGLE_LISTING = "listings/singleListing";
 const EDIT_LISTING = "listings/editListing";
+const DELETE_LISTING = "listings/deleteListing";
+
+const deleteListing = (listing) => ({
+  type: DELETE_LISTING,
+  payload: listing
+})
 
 const editListing = (listing) => ({
   type: EDIT_LISTING,
@@ -22,6 +28,18 @@ const createListing = (listing) => ({
   type: CREATE_LISTING,
   payload: listing
 });
+
+export const deleteListingThunk = (listing, id) => async dispatch => {
+  const res = await fetch(`/api/listings/${id}`, {
+    method: "DELETE"
+  });
+
+  if (res.ok) {
+    const response = await res.json();
+    await dispatch(deleteListing(id))
+    return response
+  }
+}
 
 export const editListingThunk = (listing, id) => async dispatch => {
   const res = await fetch(`/api/listings/${id}`, {
@@ -108,6 +126,10 @@ const listingReducer = (state = initialState, action) => {
       const singleListingState = { ...state, singleListing: {} }
       singleListingState.singleListing = {...action.payload}
       return singleListingState;
+    case DELETE_LISTING:
+      const newState = { ...state, listings : { ...state.listings } }
+      delete newState.listings[action.payload]
+      return newState
     default:
       return state
   }

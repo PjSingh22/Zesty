@@ -9,12 +9,11 @@ function HomePage() {
   const listings = useSelector(state => state.listings.listings)
   const listingsArr = Object.values(listings);
 
-  console.log(listingsArr)
   useEffect(() => {
     dispatch(getAllListingsThunk())
   }, [])
 
-  if (!listings) return <p>wtf</p>
+  if (!listings) return <p>something went wrong...</p>
   return (
     <div className="home-page">
       <div className="home-page__listings">
