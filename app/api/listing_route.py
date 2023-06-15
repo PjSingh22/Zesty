@@ -23,6 +23,7 @@ def listings():
 
 
 @listing_route.route("/new", methods=["POST"])
+@login_required
 def create_listing():
     listing_form = ListingForm()
     listing_form['csrf_token'].data = request.cookies['csrf_token']
@@ -63,15 +64,7 @@ def create_listing():
         return { "errors": listing_form.errors }
 
     return listing
-
-    # listings_list = []
-    # for listing in listings:
-    #     the_listing = listing.to_dict()
-    #     images = ListingImage.query.filter_by(listing_id = the_listing.id).all()
-
-    #     the_listing["images"] = [image.to_dict() for image in images]
-
-    #     listings_list.append(the_listing)
-
-
-    # return listings_list
+# TODO: create route and listener in editlising file and a thunk dispatch to get the single item
+@listing_route.route('/<int:id>')
+def single_listing():
+    pass

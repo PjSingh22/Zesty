@@ -21,7 +21,6 @@ export const getAllListingsThunk = () => async dispatch => {
 
   if (res.ok) {
     let listings = await res.json();
-    console.log("RES", listings)
     await dispatch(getAllListings(listings));
     return listings
   }
@@ -50,7 +49,7 @@ export const createListingThunk = (listing) => async dispatch => {
   }
 }
 
-const initialState = { listings: {} }
+const initialState = { listings: {}, singleListing: {} }
 
 const listingReducer = (state = initialState, action) => {
   switch(action.type) {
