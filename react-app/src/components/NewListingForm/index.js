@@ -10,6 +10,7 @@ function NewListingForm() {
   const [prodPrice, setProdPrice] = useState("");
   const [prodDesc, setProdDesc] = useState("");
   const [prodImages, setProdImages] = useState([]);
+  const [prodCat, setProdCat] = useState("");
   const [errors, setErrors] = useState("");
   const [loading, setLoading] = useState(false);
   // TODO: add error handlers
@@ -19,6 +20,7 @@ function NewListingForm() {
     setProdImages([]);
     setProdName("");
     setProdPrice("");
+    setProdCat("")
     setLoading(false);
   }
 
@@ -39,7 +41,8 @@ function NewListingForm() {
     const listingFormData = new FormData();
     listingFormData.append('name', prodName);
     listingFormData.append('price', prodPrice);
-    listingFormData.append('description', prodDesc)
+    listingFormData.append('description', prodDesc);
+    listingFormData.append('category', prodCat);
 
     for (let image of prodImages) {
       listingFormData.append('images', image);
@@ -80,6 +83,16 @@ function NewListingForm() {
         </label>
         <label>
           <input required type="number" min={1} step="0.01" value={prodPrice} onChange={e => setProdPrice(e.target.value)} placeholder="Product Price"></input>
+        </label>
+        <label>
+            category:
+            <select required value={prodCat} onChange={e=> setProdCat(e.target.value)}>
+              <option value="snacks">snacks</option>
+              <option value="soups">soups</option>
+              <option value="desserts">desserts</option>
+              <option value="drinks">drinks</option>
+              <option value="condiments">condiments</option>
+            </select>
         </label>
         <label>
           <textarea required value={prodDesc} onChange={e => setProdDesc(e.target.value)} placeholder="Product Description"></textarea>

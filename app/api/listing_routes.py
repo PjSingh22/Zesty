@@ -36,6 +36,7 @@ def create_listing():
             name = listing_form.data["name"],
             price = listing_form.data["price"],
             user_id = current_user.id,
+            category = listing_form.data["category"],
             description = listing_form.data["description"]
         )
 
