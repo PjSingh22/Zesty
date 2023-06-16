@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import NewListingForm from "./components/NewListingForm";
 import EditListing from "./components/EditListing";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import ViewListing from "./components/ViewListing";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           {/* <Route path="/listings/new">
             <NewListingForm />
           </Route> */}
+          <Route path="/listings/view/:id">
+            <ViewListing />
+          </Route>
           <Route path="/listings/:id">
             <EditListing />
           </Route>
