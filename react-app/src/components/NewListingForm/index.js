@@ -22,12 +22,6 @@ function NewListingForm() {
     setLoading(false);
   }
 
-  console.log("a                 ".trim().length)
-
-  const hasWhiteSpace = (input) => {
-    return /\s/g.test(input);
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errObj = {}
