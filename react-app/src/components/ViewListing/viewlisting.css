@@ -1,0 +1,38 @@
+.view-listing__carousel {
+  border: 1px solid green;
+  max-width: 500px;
+  max-height: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.carousel-navigation {
+  /* border: 2px solid red; */
+  display: flex;
+  position: absolute;
+  top: 40%;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.image-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.img-btn {
+  font-size: 25px;
+  border-radius: 50px;
+  padding: 5px 12px;
+  background-color: white;
+  opacity: 0.5;
+  border: none;
+  box-shadow: 1px 1px 0.2em black;
+}
