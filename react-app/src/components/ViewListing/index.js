@@ -20,17 +20,18 @@ function ViewListing() {
     <div className="view-listing-container">
       <div className="view-listing__carousel">
         <CarouselProvider
-          naturalSlideWidth={100}
+          naturalSlideWidth={10}
           naturalSlideHeight={125}
           totalSlides={listing?.images?.length}
           visibleSlides={1}
           step={1}
           infinite
           isIntrinsicHeight
+          className="carousel"
         >
           <Slider>
             {listing?.images?.map((image, i) => {
-              return <Slide index={i}><div className="image-slide" style={{backgroundImage: `url(${image.imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", width: "500px", height: "200px"}}></div></Slide>
+              return <Slide index={i}><div className="image-slide" style={{backgroundImage: `url(${image.imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", width: "500px", height: "500px"}}></div></Slide>
             })}
           </Slider>
           <div className="carousel-navigation">
@@ -38,6 +39,12 @@ function ViewListing() {
             <ButtonNext className="img-btn">{`>`}</ButtonNext>
           </div>
         </CarouselProvider>
+      </div>
+      <div className="view-listing-info">
+        <h2>$ {listing?.price}</h2>
+        <p>Free shipping</p>
+        <p>Snacks and drinks</p>
+        <p>{listing?.owner?.username}</p>
       </div>
     </div>
   )

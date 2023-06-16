@@ -1,13 +1,28 @@
-.view-listing__carousel {
-  border: 1px solid green;
-  max-width: 500px;
-  max-height: 600px;
+.view-listing-container {
+  display: flex;
+  /* border: 3px solid green; */
+  justify-content: space-evenly;
+  /* align-items: center; */
+  width: 90%;
   margin: 0 auto;
+}
+
+.view-listing__carousel {
+  /* border: 1px solid blue; */
+  width: 30%;
+  height: 700px;
+  /* margin: 0 auto; */
   display: flex;
   flex-direction: row;
+  /* justify-content: space-evenly; */
   align-items: center;
   overflow: hidden;
   position: relative;
+}
+
+.carousel {
+  /* border: 1px solid purple; */
+  margin: 0 auto;
 }
 
 
@@ -15,7 +30,7 @@
   /* border: 2px solid red; */
   display: flex;
   position: absolute;
-  top: 40%;
+  top: 45%;
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
@@ -35,4 +50,13 @@
   opacity: 0.5;
   border: none;
   box-shadow: 1px 1px 0.2em black;
+  transition: background-color 0.5s ease;
+}
+
+.img-btn:hover {
+  background-color: lightgray;
+}
+
+.view-listing-info {
+  margin-top: 80px;
 }
