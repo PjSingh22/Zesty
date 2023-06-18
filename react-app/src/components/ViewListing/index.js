@@ -10,7 +10,6 @@ function ViewListing() {
   // const images = useSelector(state => state.listings.singleListing.images)
   const dispatch = useDispatch();
 
-  console.log("view listing", listing)
   useEffect(() => {
     dispatch(getSingleListingThunk(id));
   }, [dispatch, id])
@@ -21,10 +20,10 @@ function ViewListing() {
     <div style={{display: "flex", justifyContent: "space-evenly"}}>
       <div className="view-listing__carousel">
         <CarouselProvider
-          naturalSlideWidth={10}
-          naturalSlideHeight={125}
+          // naturalSlideWidth={10}
+          // naturalSlideHeight={10}
           totalSlides={listing?.images?.length}
-          visibleSlides={1}
+          visibleSlides={2}
           step={1}
           infinite
           isIntrinsicHeight
@@ -32,7 +31,7 @@ function ViewListing() {
         >
           <Slider>
             {listing?.images?.map((image, i) => {
-              return <Slide index={i}><div className="image-slide" style={{backgroundImage: `url(${image.imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center"}}></div></Slide>
+              return <Slide index={i} key={i}><div className="image-slide" style={{backgroundImage: `url(${image.imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center"}}></div></Slide>
             })}
           </Slider>
           <div className="carousel-navigation">
@@ -51,11 +50,13 @@ function ViewListing() {
       </div>
       <div className="view-listings__reviews">
         <h2>Reviews</h2>
-        <div className="review">
-            <p>star rating</p>
-            <p>reviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreview</p>
-            <p>By soandso 12/22/22</p>
-        </div>
+        {listing && listing?.reviews?.map(review => {
+          return (<div className="review">
+            <h2 className="review-rating">{review.rating}</h2>
+            <p className="review-context">{review.context}</p>
+            <p className="review-user">{review.username}</p>
+          </div>)
+        })}
       </div>
     </div>
   )
