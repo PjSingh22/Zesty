@@ -5,6 +5,12 @@ const EDIT_LISTING = "listings/editListing";
 const DELETE_LISTING = "listings/deleteListing";
 
 const DELETE_REVIEW = "reviews/delete"
+const EDIT_REVIEW = "reviews/edit"
+
+const editReview = (review) => ({
+  type: EDIT_REVIEW,
+  payload: review
+})
 
 const deleteReview = (listingId, id) => ({
   type: DELETE_REVIEW,
@@ -38,6 +44,25 @@ const createListing = (listing) => ({
   type: CREATE_LISTING,
   payload: listing
 });
+
+export const editReviewThunk = (review, reviewId) => async dispatch => {
+  const res = await fetch(`/api/reviews/${reviewId}`, {
+    method: "PUT",
+    headers: {"Content-Type": "application/json" },
+    body: JSON.stringify(review)
+  })
+
+  if (res.ok) {
+    const data = await res.json();
+    await dispatch(editReview(data))
+    return data
+  }
+
+  if (res.errors) {
+    const errors = await res.json()
+    return errors
+  }
+}
 
 export const deleteReviewThunk = (listingId, id) => async dispatch => {
   const res = await fetch(`/api/reviews/${id}`, {
@@ -159,6 +184,17 @@ const listingReducer = (state = initialState, action) => {
       singleListing.reviews = reviewsList;
       console.log(reviewsList)
       return theState
+    case EDIT_REVIEW:
+      // console.log(action.payload)
+      return { ...state, singleListing: { ...state.singleListing, reviews: [
+        ...state.singleListing.reviews.map(review => {
+          if (review.id === action.payload.id) {
+            review.context = action.payload.context
+            review.rating = action.payload.rating
+          }
+          return review
+        })
+      ]}}
     default:
       return state
   }

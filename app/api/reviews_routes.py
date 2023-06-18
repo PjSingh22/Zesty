@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db, Listing, ListingImage, Review
-from app.forms import ListingForm
+from app.forms import ListingForm, ReviewForm
 from .auth_routes import validation_errors_to_error_messages
 from flask_login import current_user, login_user, logout_user, login_required
 
@@ -14,3 +14,20 @@ def delete_review(id):
     db.session.delete(review)
     db.session.commit()
     return { "message": "Review succesfully deleted" }
+
+@review_routes.route('/<int:id>', methods=["PUT"])
+def edit_review(id):
+    review = Review.query.get(id)
+
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        review.context = form.data["context"]
+        review.rating = form.data["rating"]
+
+        db.session.commit()
+        return review.to_dict()
+
+    if form.errors:
+        return {"errors": validation_errors_to_error_messages(form.errors)}, 400

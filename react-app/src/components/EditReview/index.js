@@ -1,15 +1,26 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useModal } from "../../context/Modal";
 import { useParams, useHistory } from "react-router-dom";
+import { editReviewThunk } from "../../store/listings";
 
 function EditReview({ id }) {
+  const dispatch = useDispatch();
+  const { closeModal } = useModal();
   const listing = useSelector(state => state.listings.singleListing);
   const review = listing.reviews.find(review => review.id === id)
   const [context, setContext] = useState(review.context);
   const [rating, setRating] = useState(review.rating);
 
   const handleSubmit = async (e) => {
-    console.log('clicked');
+    e.preventDefault();
+
+    const review = {
+      context,
+      rating
+    }
+    dispatch(editReviewThunk(review, id));
+    closeModal();
   }
   return (
     <div>
