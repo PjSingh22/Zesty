@@ -4,6 +4,16 @@ const GET_SINGLE_LISTING = "listings/singleListing";
 const EDIT_LISTING = "listings/editListing";
 const DELETE_LISTING = "listings/deleteListing";
 
+const DELETE_REVIEW = "reviews/delete"
+
+const deleteReview = (listingId, id) => ({
+  type: DELETE_REVIEW,
+  payload: {
+    listingId,
+    id
+  }
+})
+
 const deleteListing = (listing) => ({
   type: DELETE_LISTING,
   payload: listing
@@ -29,6 +39,18 @@ const createListing = (listing) => ({
   payload: listing
 });
 
+export const deleteReviewThunk = (listingId, id) => async dispatch => {
+  const res = await fetch(`/api/reviews/${id}`, {
+    method: "DELETE"
+  });
+
+  if (res.ok) {
+    const response = await res.json();
+    await dispatch(deleteReview(listingId, id));
+    return response;
+  }
+}
+
 export const deleteListingThunk = (listing, id) => async dispatch => {
   const res = await fetch(`/api/listings/${id}`, {
     method: "DELETE"
@@ -36,8 +58,8 @@ export const deleteListingThunk = (listing, id) => async dispatch => {
 
   if (res.ok) {
     const response = await res.json();
-    await dispatch(deleteListing(id))
-    return response
+    await dispatch(deleteListing(id));
+    return response;
   }
 }
 
@@ -50,13 +72,13 @@ export const editListingThunk = (listing, id) => async dispatch => {
 
   if (res.ok) {
     const updatedListing = await res.json();
-    await dispatch(editListing(updatedListing))
-    return updatedListing
+    await dispatch(editListing(updatedListing));
+    return updatedListing;
   }
 
   if (res.errors) {
     let errors = await res.json();
-    return errors
+    return errors;
   }
 }
 
@@ -65,8 +87,8 @@ export const getSingleListingThunk = (id) => async dispatch => {
 
   if (res.ok) {
     const data = await res.json();
-    await dispatch(getSingleListing(data))
-    return data
+    await dispatch(getSingleListing(data));
+    return data;
   }
 
   if (res.errors) {
@@ -130,6 +152,13 @@ const listingReducer = (state = initialState, action) => {
       const newState = { ...state, listings : { ...state.listings } }
       delete newState.listings[action.payload]
       return newState
+    case DELETE_REVIEW:
+      const theState = { ...state, singleListing: { ...state.singleListing, reviews: [...state.singleListing.reviews]} }
+      const singleListing = theState.singleListing;
+      let reviewsList = singleListing.reviews.filter(review => review.id !== action.payload.id)
+      singleListing.reviews = reviewsList;
+      console.log(reviewsList)
+      return theState
     default:
       return state
   }

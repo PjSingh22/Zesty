@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getSingleListingThunk } from "../../store/listings";
+import { deleteReviewThunk, getSingleListingThunk } from "../../store/listings";
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import "./viewlisting.css"
 function ViewListing() {
@@ -50,12 +50,16 @@ function ViewListing() {
       </div>
       <div className="view-listings__reviews">
         <h2>Reviews</h2>
-        {listing && listing?.reviews?.map(review => {
-          return (<div className="review">
-            <h2 className="review-rating">{review.rating}</h2>
-            <p className="review-context">{review.context}</p>
-            <p className="review-user">{review.username}</p>
-          </div>)
+        {listing?.reviews?.map(review => {
+          return (
+            <div className="review">
+              <h2 className="review-rating">{review.rating}</h2>
+              <p className="review-context">{review.context}</p>
+              <p className="review-user">{review.username}</p>
+              <button>Edit</button>
+              <button onClick={() => dispatch(deleteReviewThunk(listing.id, review.id))}>Delete</button>
+            </div>
+          )
         })}
       </div>
     </div>

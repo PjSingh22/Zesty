@@ -80,7 +80,6 @@ def single_listing(id):
     for review in reviews:
         review_dict = review.to_dict()
         reviewer = User.query.get(review_dict['userId'])
-
         review_dict['username'] = reviewer.username
         reviews_list.append(review_dict)
 

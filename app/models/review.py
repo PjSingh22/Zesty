@@ -17,7 +17,9 @@ class Review(db.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'context': self.context,
             'rating': self.rating,
-            'userId': self.user_id
+            'userId': self.user_id,
+            'createdAt': self.created_at
         }
