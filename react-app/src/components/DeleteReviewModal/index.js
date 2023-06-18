@@ -1,23 +1,24 @@
 import { useModal } from "../../context/Modal"
 import { useDispatch } from "react-redux";
-import { deleteListingThunk } from "../../store/listings";
 import { useState } from "react";
+import { deleteReviewThunk } from "../../store/listings";
 
-function DeleteListingModal({ listing, id }) {
+function DeleteReviewModal({listingId, id}) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const handleDelete = async () => {
-    setLoading(true)
-    await dispatch(deleteListingThunk(listing, id))
+    setLoading(true);
+    await dispatch(deleteReviewThunk(listingId, id));
 
-    closeModal()
+    closeModal();
   }
+
   return (
     <div>
-      <h1>Delete this listing?</h1>
-      {loading ? <p>deleting...</p> : (
+      <h1>Delete this review?</h1>
+      { loading ? <p>deleting</p> : (
         <div>
           <button onClick={closeModal}>Cancel</button>
           <button onClick={handleDelete}>Yes</button>
@@ -27,4 +28,4 @@ function DeleteListingModal({ listing, id }) {
   )
 }
 
-export default DeleteListingModal
+export default DeleteReviewModal

@@ -1,11 +1,15 @@
 import { useEffect } from "react";
+import { useModal } from "../../context/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { deleteReviewThunk, getSingleListingThunk } from "../../store/listings";
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import "./viewlisting.css"
+import OpenModalButton from "../OpenModalButton";
+import DeleteReviewModal from "../DeleteReviewModal";
 function ViewListing() {
   const { id } = useParams()
+  const { closeModal } = useModal();
   const listing = useSelector(state => state.listings.singleListing);
   // const images = useSelector(state => state.listings.singleListing.images)
   const dispatch = useDispatch();
@@ -57,7 +61,13 @@ function ViewListing() {
               <p className="review-context">{review.context}</p>
               <p className="review-user">{review.username}</p>
               <button>Edit</button>
-              <button onClick={() => dispatch(deleteReviewThunk(listing.id, review.id))}>Delete</button>
+              <OpenModalButton
+                className="delete-btn"
+                buttonText="Delete"
+                onItemClick={closeModal}
+                modalComponent={<DeleteReviewModal listingId={listing.id} id={review.id} />}
+              />
+              {/* <button onClick={() => dispatch(deleteReviewThunk(listing.id, review.id))}>Delete</button> */}
             </div>
           )
         })}
