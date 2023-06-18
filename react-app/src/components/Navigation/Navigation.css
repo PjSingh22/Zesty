@@ -7,5 +7,38 @@
 }
 
 .nav-bar {
+  padding: 15px;
   border: 1px solid red;
+  display: grid;
+  grid-template-columns: 300px 2fr 300px;
+  align-items: center;
+}
+
+.logo {
+  /* border: 1px solid blue; */
+  background-image: url(./logo-no-background.png);
+  height: 50px;
+  width: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.nav-right-side {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  justify-self: flex-end;
+}
+
+.fa-heart {
+  font-size: 35px;
+}
+
+.fas:hover, .far:hover {
+  cursor: pointer;
+}
+
+input[type="search"] {
+  width: 100%;
 }
