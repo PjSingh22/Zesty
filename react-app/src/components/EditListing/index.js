@@ -12,8 +12,8 @@ function EditListing() {
   const [listName, setListName] = useState("");
   const [listPrice, setListPrice] = useState("");
   const [listDesc, setListDesc] = useState("");
-  const [errors, setErrors] = useState({})
-  const [loading, setLoading] = useState(false)
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
 
   useEffect(() => {

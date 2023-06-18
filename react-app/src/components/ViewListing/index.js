@@ -7,6 +7,7 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-re
 import "./viewlisting.css"
 import OpenModalButton from "../OpenModalButton";
 import DeleteReviewModal from "../DeleteReviewModal";
+import EditReview from "../EditReview";
 function ViewListing() {
   const { id } = useParams()
   const { closeModal } = useModal();
@@ -24,8 +25,8 @@ function ViewListing() {
     <div style={{display: "flex", justifyContent: "space-evenly"}}>
       <div className="view-listing__carousel">
         <CarouselProvider
-          // naturalSlideWidth={10}
-          // naturalSlideHeight={10}
+          naturalSlideWidth={10}
+          naturalSlideHeight={100}
           totalSlides={listing?.images?.length}
           visibleSlides={2}
           step={1}
@@ -54,20 +55,25 @@ function ViewListing() {
       </div>
       <div className="view-listings__reviews">
         <h2>Reviews</h2>
+        <button>create review</button>
         {listing?.reviews?.map(review => {
           return (
             <div className="review">
               <h2 className="review-rating">{review.rating}</h2>
               <p className="review-context">{review.context}</p>
               <p className="review-user">{review.username}</p>
-              <button>Edit</button>
+              <OpenModalButton
+                className="edit-btn"
+                buttonText="Edit"
+                onItemClick={closeModal}
+                modalComponent={ <EditReview id={review.id}/> }
+              />
               <OpenModalButton
                 className="delete-btn"
                 buttonText="Delete"
                 onItemClick={closeModal}
                 modalComponent={<DeleteReviewModal listingId={listing.id} id={review.id} />}
               />
-              {/* <button onClick={() => dispatch(deleteReviewThunk(listing.id, review.id))}>Delete</button> */}
             </div>
           )
         })}
