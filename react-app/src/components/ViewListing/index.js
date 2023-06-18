@@ -8,6 +8,7 @@ import "./viewlisting.css"
 import OpenModalButton from "../OpenModalButton";
 import DeleteReviewModal from "../DeleteReviewModal";
 import EditReview from "../EditReview";
+import CreateReviewModal from "../CreateReviewModal";
 function ViewListing() {
   const { id } = useParams()
   const { closeModal } = useModal();
@@ -55,7 +56,12 @@ function ViewListing() {
       </div>
       <div className="view-listings__reviews">
         <h2>Reviews</h2>
-        <button>create review</button>
+        <OpenModalButton
+          className="create-rev-btn"
+          buttonText="Add Review"
+          onItemClick={closeModal}
+          modalComponent={<CreateReviewModal listing={listing} />}
+        />
         {listing?.reviews?.map(review => {
           return (
             <div className="review">

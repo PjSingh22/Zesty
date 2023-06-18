@@ -6,6 +6,12 @@ const DELETE_LISTING = "listings/deleteListing";
 
 const DELETE_REVIEW = "reviews/delete"
 const EDIT_REVIEW = "reviews/edit"
+const CREATE_REVIEW = "reviews/new"
+
+const createReview = (review) => ({
+  type: CREATE_REVIEW,
+  payload: review
+})
 
 const editReview = (review) => ({
   type: EDIT_REVIEW,
@@ -44,6 +50,23 @@ const createListing = (listing) => ({
   type: CREATE_LISTING,
   payload: listing
 });
+
+export const createReviewThunk = (listingId, review) => async dispatch => {
+  const res = await fetch(`/api/reviews/${listingId}`, {
+    method: "POST",
+    body: review
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    await dispatch(createReview(data));
+    return data
+  }
+
+  if (res.errors) {
+    return res.json();
+  }
+}
 
 export const editReviewThunk = (review, reviewId) => async dispatch => {
   const res = await fetch(`/api/reviews/${reviewId}`, {
@@ -172,6 +195,7 @@ const listingReducer = (state = initialState, action) => {
     case GET_SINGLE_LISTING:
       const singleListingState = { ...state, singleListing: {} }
       singleListingState.singleListing = {...action.payload}
+      singleListingState.singleListing.reviews = singleListingState.singleListing.reviews.sort((a,b) => b.id - a.id)
       return singleListingState;
     case DELETE_LISTING:
       const newState = { ...state, listings : { ...state.listings } }
@@ -185,7 +209,6 @@ const listingReducer = (state = initialState, action) => {
       console.log(reviewsList)
       return theState
     case EDIT_REVIEW:
-      // console.log(action.payload)
       return { ...state, singleListing: { ...state.singleListing, reviews: [
         ...state.singleListing.reviews.map(review => {
           if (review.id === action.payload.id) {
@@ -195,6 +218,11 @@ const listingReducer = (state = initialState, action) => {
           return review
         })
       ]}}
+    case CREATE_REVIEW:
+      const listingState = { ...state, singleListing: { ...state.singleListing }}
+      listingState.singleListing.reviews.push(action.payload)
+      listingState.singleListing.reviews =  listingState.singleListing.reviews.sort((a, b) => b.id - a.id)
+      return listingState;
     default:
       return state
   }
