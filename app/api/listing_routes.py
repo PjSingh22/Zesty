@@ -36,6 +36,7 @@ def create_listing():
             name = listing_form.data["name"],
             price = listing_form.data["price"],
             user_id = current_user.id,
+            category = listing_form.data["category"],
             description = listing_form.data["description"]
         )
 
@@ -72,6 +73,18 @@ def single_listing(id):
 
     listing_dict = listing.to_dict()
 
+    reviews = listing.reviews
+
+    reviews_list = []
+
+    for review in reviews:
+        review_dict = review.to_dict()
+        reviewer = User.query.get(review_dict['userId'])
+        review_dict['username'] = reviewer.username
+        reviews_list.append(review_dict)
+
+
+    listing_dict["reviews"] = reviews_list
     listing_dict["images"] = [listing.image.to_dict() for listing.image in listing.images]
     owner = User.query.get(listing_dict["userId"])
     listing_dict["owner"] = owner.to_dict()

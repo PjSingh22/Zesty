@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllListingsThunk } from "../../store/listings";
 import ListingCard from "../ListingCard";
@@ -11,13 +11,13 @@ function HomePage() {
 
   useEffect(() => {
     dispatch(getAllListingsThunk())
-  }, [])
+  }, [dispatch])
 
   if (!listings) return <p>something went wrong...</p>
   return (
     <div className="home-page">
       <div className="home-page__listings">
-        {listingsArr.map(listing => <ListingCard listing={listing} />)}
+        {listingsArr.map(listing => <ListingCard listing={listing} key={listing.id} />)}
       </div>
     </div>
   )

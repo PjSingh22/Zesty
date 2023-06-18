@@ -12,8 +12,9 @@ function EditListing() {
   const [listName, setListName] = useState("");
   const [listPrice, setListPrice] = useState("");
   const [listDesc, setListDesc] = useState("");
-  const [errors, setErrors] = useState({})
-  const [loading, setLoading] = useState(false)
+  const [listCat, setListCat] = useState("");
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
 
   useEffect(() => {
@@ -26,6 +27,7 @@ function EditListing() {
         setListName(listing.name)
         setListPrice(listing.price)
         setListDesc(listing.description)
+        setListCat(listing.category)
       }
     }, 100);
   }, [listing])
@@ -46,6 +48,7 @@ function EditListing() {
     const updatedListing ={
       "name": listName,
       "price": listPrice,
+      "category": listCat,
       "description": listDesc
     }
 
@@ -73,6 +76,16 @@ function EditListing() {
             Price
             <input type="number" step="0.01" min={1} value={listPrice} onChange={(e) => setListPrice(e.target.value)} />
           </label>
+          <label>
+            category:
+            <select required value={listCat} onChange={e=> setListCat(e.target.value)}>
+              <option value="snacks">snacks</option>
+              <option value="soups">soups</option>
+              <option value="desserts">desserts</option>
+              <option value="drinks">drinks</option>
+              <option value="condiments">condiments</option>
+            </select>
+        </label>
           <label>
             Description
             <textarea type="text" value={listDesc} onChange={(e) => setListDesc(e.target.value)} />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
+// import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import NewListingForm from "./components/NewListingForm";
 import EditListing from "./components/EditListing";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import ViewListing from "./components/ViewListing";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           {/* <Route path="/listings/new">
             <NewListingForm />
           </Route> */}
+          <Route path="/listings/view/:id">
+            <ViewListing />
+          </Route>
           <Route path="/listings/:id">
             <EditListing />
           </Route>

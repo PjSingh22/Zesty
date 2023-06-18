@@ -9,4 +9,5 @@ class ListingForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     price = FloatField('price', validators=[DataRequired()])
     description = StringField('description', validators=[DataRequired()])
+    category = StringField('category', validators=[DataRequired()])
     images = MultipleFileField('Upload Images', validators=[FileAllowed(list(ALLOWED_EXTENSIONS))], render_kw={'multiple': True})
