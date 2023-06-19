@@ -19,7 +19,7 @@ function Navigation({ isLoaded }){
         <div>
           <form>
             <label className='search-bar'>
-              <input type='search' placeholder='search...'></input>
+              <input type='search' placeholder='Search for anything'></input>
               <div className='search-icon'>
                 <button className='search-btn' type='submit'><i className="fas fa-search fa-lg"></i></button>
               </div>

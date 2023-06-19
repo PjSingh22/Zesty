@@ -101,6 +101,7 @@ def update_listing(id):
     if form.validate_on_submit():
         listing.name = form.data["name"]
         listing.price = form.data["price"]
+        listing.category = form.data["category"]
         listing.description = form.data["description"]
 
         db.session.commit()

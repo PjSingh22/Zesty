@@ -10,10 +10,9 @@ function NewListingForm() {
   const [prodPrice, setProdPrice] = useState("");
   const [prodDesc, setProdDesc] = useState("");
   const [prodImages, setProdImages] = useState([]);
-  const [prodCat, setProdCat] = useState("");
+  const [prodCat, setProdCat] = useState("snacks");
   const [errors, setErrors] = useState("");
   const [loading, setLoading] = useState(false);
-  // TODO: add error handlers
 
   const clearInputs = () => {
     setProdDesc("");
@@ -86,7 +85,7 @@ function NewListingForm() {
         </label>
         <label>
             category:
-            <select required value={prodCat} onChange={e=> setProdCat(e.target.value)}>
+            <select required value={prodCat} defaultValue="snacks" onChange={e=> setProdCat(e.target.value)}>
               <option value="snacks">snacks</option>
               <option value="soups">soups</option>
               <option value="desserts">desserts</option>
