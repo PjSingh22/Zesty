@@ -9,23 +9,38 @@ import OpenModalButton from "../OpenModalButton";
 import DeleteReviewModal from "../DeleteReviewModal";
 import EditReview from "../EditReview";
 import CreateReviewModal from "../CreateReviewModal";
+import { addItemThunk } from "../../store/cart";
 function ViewListing() {
   const { id } = useParams()
   const { closeModal } = useModal();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.session.user)
   const listing = useSelector(state => state.listings.singleListing);
   // const images = useSelector(state => state.listings.singleListing.images)
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getSingleListingThunk(id));
   }, [dispatch, id])
+
+  const addToCart = async (e) => {
+    e.preventDefault();
+
+    const item = {
+      "id": listing.id,
+      "name": listing.name,
+      "quantity": 1,
+      "price": listing.price
+    }
+
+    await dispatch(addItemThunk(item, user ? user.id : 0))
+  }
 
   if (!listing) return null
   return (
     <div className="view-listing-container">
     <div style={{display: "flex", justifyContent: "space-evenly"}}>
       <div className="view-listing__carousel">
-        <CarouselProvider
+        {/* <CarouselProvider
           naturalSlideWidth={10}
           naturalSlideHeight={100}
           totalSlides={listing?.images?.length}
@@ -44,12 +59,13 @@ function ViewListing() {
             <ButtonBack className="img-btn btn-left">{`<`}</ButtonBack>
             <ButtonNext className="img-btn">{`>`}</ButtonNext>
           </div>
-        </CarouselProvider>
+        </CarouselProvider> */}
       </div>
       <div className="view-listing-info">
+        <button onClick={addToCart}>Add Item</button>
         <h2>$ {listing?.price}</h2>
+        <p>{listing?.name}</p>
         <p>Free shipping</p>
-        <p>Snacks and drinks</p>
         <p>{listing?.owner?.username}</p>
         <p>Category: {listing?.category}</p>
       </div>

@@ -28,7 +28,7 @@ function CreateReviewModal({listing}) {
       <h2>Create Review</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          <textarea value={context} onChange={e => setContext(e.target.value)}></textarea>
+          <textarea placeholder="(optional)" value={context} onChange={e => setContext(e.target.value)}></textarea>
         </label>
         <label>
           <input value={rating} type="number" min={1} max={5} onChange={e => setRating(e.target.value)}></input>

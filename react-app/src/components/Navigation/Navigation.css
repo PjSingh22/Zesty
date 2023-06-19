@@ -111,3 +111,17 @@ input[type="search"]:focus {
   padding: 10px;
   border-radius: 5px;
 }
+
+.cart-logo {
+  position: relative;
+}
+
+.cart-logo__amount {
+  position: absolute;
+  right: -25%;
+  background-color: #31C48D;
+  padding: 0 4px;
+  color: white;
+  border-radius: 10px;
+  top: 10px;
+}

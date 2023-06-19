@@ -37,8 +37,9 @@ function Navigation({ isLoaded }){
             <div>
               <ProfileButton user={sessionUser} />
             </div>
-            <div>
+            <div className='cart-logo'>
               <i className="fas fa-shopping-cart fa-lg"></i>
+              <div className='cart-logo__amount'>0</div>
             </div>
           </div>
         )}
