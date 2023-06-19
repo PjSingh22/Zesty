@@ -1,14 +1,36 @@
 const POPULATE_CART = "cart/getItems"
 const ADD_ITEM = "cart/add"
+const CLEAN_UP = "cart/empty"
+
+const cleanUp = () => ({
+  type: CLEAN_UP
+})
 
 const addItem = (item) => ({
   type: ADD_ITEM,
   payload: item
 })
 
-const populateCart = () => ({
+const populateCart = (items) => ({
   type: POPULATE_CART,
+  payload: items
 })
+
+export const cleanUpCartThunk = () => async dispatch => {
+  await dispatch(cleanUp());
+  return;
+}
+
+
+export const populateCartThunk = (userId) => async dispatch => {
+  const storedCart = JSON.parse(localStorage.getItem(`cart_${userId}`))
+
+  if (storedCart !== null) {
+    await dispatch(populateCart(storedCart))
+  } else {
+    return [];
+  }
+}
 
 export const addItemThunk = (item, userId) => async dispatch => {
 
@@ -50,6 +72,12 @@ const cartReducer = (state = initialState, action) => {
         return cartState;
       }
       else return { cart: { ...state.cart, [action.payload.id]: action.payload }}
+    case POPULATE_CART:
+      const popCartState = { cart: {} }
+      action.payload.forEach(item => popCartState.cart[item.id] = item)
+      return popCartState
+    case CLEAN_UP:
+      return { cart: {} }
     default:
       return state
   }

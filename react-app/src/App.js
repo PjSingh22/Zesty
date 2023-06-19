@@ -10,6 +10,8 @@ import NewListingForm from "./components/NewListingForm";
 import EditListing from "./components/EditListing";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ViewListing from "./components/ViewListing";
+import { populateCartThunk } from "./store/cart";
+import CheckoutPage from "./components/CheckoutPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +27,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <HomePage />
+          </Route>
+          <Route path='/cart'>
+            <CheckoutPage />
           </Route>
           <ProtectedRoute path="/listings/new">
             <NewListingForm />

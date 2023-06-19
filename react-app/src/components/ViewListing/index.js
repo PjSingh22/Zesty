@@ -9,7 +9,7 @@ import OpenModalButton from "../OpenModalButton";
 import DeleteReviewModal from "../DeleteReviewModal";
 import EditReview from "../EditReview";
 import CreateReviewModal from "../CreateReviewModal";
-import { addItemThunk } from "../../store/cart";
+import { addItemThunk, populateCartThunk } from "../../store/cart";
 function ViewListing() {
   const { id } = useParams()
   const { closeModal } = useModal();
@@ -21,6 +21,10 @@ function ViewListing() {
   useEffect(() => {
     dispatch(getSingleListingThunk(id));
   }, [dispatch, id])
+
+  useEffect(() => {
+    dispatch(populateCartThunk(user ? user.id : 0))
+  }, [dispatch])
 
   const addToCart = async (e) => {
     e.preventDefault();

@@ -8,7 +8,8 @@ import './Navigation.css';
 function Navigation({ isLoaded }){
   const history = useHistory()
 	const sessionUser = useSelector(state => state.session.user);
-
+  const cart = useSelector(state => state.cart.cart)
+  const cartLength = Object.values(cart).length
 	return (
     <div className='nav-container'>
 
@@ -38,8 +39,8 @@ function Navigation({ isLoaded }){
               <ProfileButton user={sessionUser} />
             </div>
             <div className='cart-logo'>
-              <i className="fas fa-shopping-cart fa-lg"></i>
-              <div className='cart-logo__amount'>0</div>
+              <i onClick={() => history.push('/cart')} className="fas fa-shopping-cart fa-lg"></i>
+              {cartLength > 0 ? <div className='cart-logo__amount'>{cartLength}</div> : null}
             </div>
           </div>
         )}

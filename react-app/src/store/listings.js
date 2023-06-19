@@ -174,7 +174,6 @@ export const createListingThunk = (listing) => async dispatch => {
 
   if (res.ok) {
     let data = await res.json()
-    console.log("DATA RES", data);
     await dispatch(createListing(data))
     return {"message": "success!"}
   }
@@ -206,7 +205,6 @@ const listingReducer = (state = initialState, action) => {
       const singleListing = theState.singleListing;
       let reviewsList = singleListing.reviews.filter(review => review.id !== action.payload.id)
       singleListing.reviews = reviewsList;
-      console.log(reviewsList)
       return theState
     case EDIT_REVIEW:
       return { ...state, singleListing: { ...state.singleListing, reviews: [
