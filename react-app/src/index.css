@@ -6,10 +6,10 @@
   box-sizing: border-box;
 }
 
-body {
+/* body {
   width: 75%;
   margin: 0 auto;
-}
+} */
 
 button:hover {
   cursor: pointer;
