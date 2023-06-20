@@ -67,19 +67,31 @@ function ViewListing() {
         </div>
         <div className="view-listings__reviews">
           <h2>Reviews</h2>
-          <OpenModalButton
+          {user ?
+            <OpenModalButton
             className="create-rev-btn"
             buttonText="Add Review"
             onItemClick={closeModal}
             modalComponent={<CreateReviewModal listing={listing} />}
           />
+          :
+          null
+          }
+          {/* <OpenModalButton
+            className="create-rev-btn"
+            buttonText="Add Review"
+            onItemClick={closeModal}
+            modalComponent={<CreateReviewModal listing={listing} />}
+          /> */}
           {listing?.reviews?.map(review => {
             return (
               <div className="review">
                 <h2 className="review-rating">{review.rating}</h2>
                 <p className="review-context">{review.context}</p>
                 <p className="review-user">{review.username}</p>
-                <OpenModalButton
+                {user ? user.id === review.userId ?
+                  <div>
+                    <OpenModalButton
                   className="edit-btn"
                   buttonText="Edit"
                   onItemClick={closeModal}
@@ -91,6 +103,20 @@ function ViewListing() {
                   onItemClick={closeModal}
                   modalComponent={<DeleteReviewModal listingId={listing.id} id={review.id} />}
                 />
+                  </div>
+                : null : null}
+                {/* <OpenModalButton
+                  className="edit-btn"
+                  buttonText="Edit"
+                  onItemClick={closeModal}
+                  modalComponent={ <EditReview id={review.id}/> }
+                />
+                <OpenModalButton
+                  className="delete-btn"
+                  buttonText="Delete"
+                  onItemClick={closeModal}
+                  modalComponent={<DeleteReviewModal listingId={listing.id} id={review.id} />}
+                /> */}
               </div>
             )
           })}
