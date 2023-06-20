@@ -77,12 +77,6 @@ function ViewListing() {
           :
           null
           }
-          {/* <OpenModalButton
-            className="create-rev-btn"
-            buttonText="Add Review"
-            onItemClick={closeModal}
-            modalComponent={<CreateReviewModal listing={listing} />}
-          /> */}
           {listing?.reviews?.map(review => {
             return (
               <div className="review">
@@ -92,31 +86,21 @@ function ViewListing() {
                 {user ? user.id === review.userId ?
                   <div>
                     <OpenModalButton
-                  className="edit-btn"
-                  buttonText="Edit"
-                  onItemClick={closeModal}
-                  modalComponent={ <EditReview id={review.id}/> }
-                />
-                <OpenModalButton
-                  className="delete-btn"
-                  buttonText="Delete"
-                  onItemClick={closeModal}
-                  modalComponent={<DeleteReviewModal listingId={listing.id} id={review.id} />}
-                />
+                      className="edit-btn"
+                      buttonText="Edit"
+                      onItemClick={closeModal}
+                      modalComponent={ <EditReview id={review.id}/> }
+                    />
+                    <OpenModalButton
+                      className="delete-btn"
+                      buttonText="Delete"
+                      onItemClick={closeModal}
+                      modalComponent={<DeleteReviewModal listingId={listing.id} id={review.id} />}
+                    />
                   </div>
-                : null : null}
-                {/* <OpenModalButton
-                  className="edit-btn"
-                  buttonText="Edit"
-                  onItemClick={closeModal}
-                  modalComponent={ <EditReview id={review.id}/> }
-                />
-                <OpenModalButton
-                  className="delete-btn"
-                  buttonText="Delete"
-                  onItemClick={closeModal}
-                  modalComponent={<DeleteReviewModal listingId={listing.id} id={review.id} />}
-                /> */}
+                : null
+                : null
+              }
               </div>
             )
           })}

@@ -9,7 +9,7 @@ function CheckoutPage() {
   const cart = useSelector(state => state.cart.cart);
   const user = useSelector(state => state.session.user)
   const cartItems = Object.values(cart);
-  console.log(cartItems)
+
   useEffect(() => {
     dispatch(populateCartThunk(user ? user.id : 0))
   }, [dispatch])
