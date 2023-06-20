@@ -51,6 +51,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <h1>footer coming soon</h1>
     </>
   );
 }

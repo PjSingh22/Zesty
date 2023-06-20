@@ -20,7 +20,7 @@ const Carousel = ({ images }) => {
       </button>
       <div style={{backgroundImage: `url(${images[currentImageIndex]?.imageUrl})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", width: "600px", height: "600px" }} alt="item" />
       <button className="img-btn btn-right" onClick={nextImage}>
-      <i className="fas fa-chevron-right"></i>
+        <i className="fas fa-chevron-right"></i>
       </button>
     </div>
   );

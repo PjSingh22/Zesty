@@ -1,5 +1,7 @@
 const POPULATE_CART = "cart/getItems"
 const ADD_ITEM = "cart/add"
+const DECREMENT_COUNT = "cart/decrement"
+const REMOVE_ITEM = "cart/remove"
 const CLEAN_UP = "cart/empty"
 
 const cleanUp = () => ({
@@ -8,6 +10,16 @@ const cleanUp = () => ({
 
 const addItem = (item) => ({
   type: ADD_ITEM,
+  payload: item
+})
+
+const removeItem = (item) => ({
+  type: REMOVE_ITEM,
+  payload: item
+})
+
+const decrementCount = (item) => ({
+  type: DECREMENT_COUNT,
   payload: item
 })
 
@@ -32,6 +44,27 @@ export const populateCartThunk = (userId) => async dispatch => {
   }
 }
 
+export const removeItemThunk = (item, userId) => async dispatch => {
+  let storedCart = JSON.parse(localStorage.getItem(`cart_${userId}`));
+
+  storedCart = storedCart.filter(cItem => cItem.id !== item.id);
+
+  localStorage.setItem(`cart_${userId}`, JSON.stringify(storedCart));
+
+  dispatch(removeItem(item));
+}
+
+export const decrementCountThunk = (item, userId) => async dispatch => {
+  const storedCart = JSON.parse(localStorage.getItem(`cart_${userId}`));
+  const foundItem = storedCart.find(cItem => cItem.id === item.id);
+
+  foundItem.quantity -= 1;
+
+  localStorage.setItem(`cart_${userId}`, JSON.stringify(storedCart));
+
+  await dispatch(decrementCount(item));
+}
+
 export const addItemThunk = (item, userId) => async dispatch => {
 
   const storedCart = JSON.parse(localStorage.getItem(`cart_${userId}`))
@@ -41,11 +74,6 @@ export const addItemThunk = (item, userId) => async dispatch => {
     localStorage.setItem(`cart_${userId}`, JSON.stringify(newCart))
     await dispatch(addItem(item))
   } else {
-    // get cart items
-    // add new item to cart items
-    // check for duplicates, if so then increment count, if not then add new item
-    // store new array into local storage
-    // dispatch action to add new item to cart
     const cartItems = [...storedCart]
     const existingItem = cartItems.find(cItem => cItem.id === item.id)
     if (existingItem) {
@@ -72,10 +100,22 @@ const cartReducer = (state = initialState, action) => {
         return cartState;
       }
       else return { cart: { ...state.cart, [action.payload.id]: action.payload }}
+
     case POPULATE_CART:
       const popCartState = { cart: {} }
       action.payload.forEach(item => popCartState.cart[item.id] = item)
       return popCartState
+
+    case DECREMENT_COUNT:
+      const newCart = { cart: { ...state.cart }}
+      const foundItem = newCart.cart[action.payload.id]
+      foundItem.quantity -= 1;
+      return newCart;
+
+    case REMOVE_ITEM:
+      const aCart = { cart: { ...state.cart } }
+      delete aCart.cart[action.payload.id]
+      return aCart;
     case CLEAN_UP:
       return { cart: {} }
     default:
