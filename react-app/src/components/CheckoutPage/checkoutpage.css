@@ -1,0 +1,22 @@
+.checkout-container {
+  /* padding: 15px; */
+  border: 1px solid green;
+  display: flex;
+  justify-content: space-between;
+  width: 74%;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: fit-content;
+}
+
+.checkout-details {
+  border: 1px solid red;
+  width: 30%;
+  justify-self: flex-end;
+}

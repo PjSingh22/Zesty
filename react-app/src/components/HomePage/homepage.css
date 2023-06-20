@@ -1,6 +1,6 @@
 .home-page {
-  /* width: 90%; */
-  /* margin:  0 auto; */
+  width: 75%;
+  margin:  0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;

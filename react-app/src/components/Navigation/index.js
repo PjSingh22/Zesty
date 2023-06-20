@@ -38,8 +38,8 @@ function Navigation({ isLoaded }){
             <div>
               <ProfileButton user={sessionUser} />
             </div>
-            <div className='cart-logo'>
-              <i onClick={() => history.push('/cart')} className="fas fa-shopping-cart fa-lg"></i>
+            <div onClick={() => history.push('/cart')} className='cart-logo'>
+              <i className="fas fa-shopping-cart fa-lg"></i>
               {cartLength > 0 ? <div className='cart-logo__amount'>{cartLength}</div> : null}
             </div>
           </div>

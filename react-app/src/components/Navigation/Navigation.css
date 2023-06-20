@@ -125,3 +125,7 @@ input[type="search"]:focus {
   border-radius: 10px;
   top: 10px;
 }
+
+.cart-logo__amount:hover {
+  cursor: pointer;
+}
