@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useModal } from "../../context/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -18,6 +18,7 @@ function ViewListing() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
   const listing = useSelector(state => state.listings.singleListing);
+  const [buttonText, setButtonText] = useState("Add To Cart")
   // const images = useSelector(state => state.listings.singleListing.images)
   const images = listing?.images?.map(image => {
     return {
@@ -62,19 +63,21 @@ function ViewListing() {
           <p className="info info-shipping">Free shipping 😉</p>
           <p className="info info-owner">{listing?.owner?.username}</p>
           <p className="info info-cat">Category: {listing?.category}</p>
-          <button onClick={addToCart}>Add To Cart</button>
+          <button onClick={addToCart}>{buttonText}</button>
           <p className="info info-desc">{listing?.description}</p>
         </div>
         </div>
         <div className="view-listings__reviews">
           <h2>Reviews</h2>
           {user ?
+          <div className="add-review">
             <OpenModalButton
-            className="create-rev-btn"
+            className="create-rev-btn add-review"
             buttonText="Add Review"
             onItemClick={closeModal}
             modalComponent={<CreateReviewModal listing={listing} />}
           />
+          </div>
           :
           null
           }
@@ -83,27 +86,33 @@ function ViewListing() {
               <div className="review">
                 <StarRatings
                   rating={review.rating}
-                  starRatedColor="gold"
-                  starDimension="20px"
-                  starSpacing="2px"
+                  starRatedColor="#ffd700"
+                  starSpacing='2px'
+                  svgIconPath="M63.893,24.277c-0.238-0.711-0.854-1.229-1.595-1.343l-19.674-3.006L33.809,1.15
+                    C33.479,0.448,32.773,0,31.998,0s-1.48,0.448-1.811,1.15l-8.815,18.778L1.698,22.935c-0.741,0.113-1.356,0.632-1.595,1.343
+                    c-0.238,0.71-0.059,1.494,0.465,2.031l14.294,14.657L11.484,61.67c-0.124,0.756,0.195,1.517,0.822,1.957
+                    c0.344,0.243,0.747,0.366,1.151,0.366c0.332,0,0.666-0.084,0.968-0.25l17.572-9.719l17.572,9.719c0.302,0.166,0.636,0.25,0.968,0.25
+                    c0.404,0,0.808-0.123,1.151-0.366c0.627-0.44,0.946-1.201,0.822-1.957l-3.378-20.704l14.294-14.657
+                    C63.951,25.771,64.131,24.987,63.893,24.277z"
+                  svgIconViewBox='0 0 64 64'
                   numberOfStars={5}
-                  // svgIconPath="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+                  starDimension='15px'
                   name='rating'
                 />
                 {/* <h2 className="review-rating">{review.rating}</h2> */}
                 <p className="review-context">{review.context}</p>
                 <p className="review-user">- {review.username}</p>
                 {user ? user.id === review.userId ?
-                  <div>
+                  <div className="review-btns">
                     <OpenModalButton
                       className="edit-btn"
-                      buttonText="Edit"
+                      buttonText={<i className="fas fa-edit fa-lg"></i>}
                       onItemClick={closeModal}
                       modalComponent={ <EditReview id={review.id}/> }
                     />
                     <OpenModalButton
                       className="delete-btn"
-                      buttonText="Delete"
+                      buttonText={<i className="fas fa-trash fa-lg"></i>}
                       onItemClick={closeModal}
                       modalComponent={<DeleteReviewModal listingId={listing.id} id={review.id} />}
                     />

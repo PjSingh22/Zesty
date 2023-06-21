@@ -1,6 +1,11 @@
 /* TODO Add site wide styles */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+:root {
+  --main-color: #31C48D;
+}
+
+
 * {
   padding: 0;
   margin: 0;

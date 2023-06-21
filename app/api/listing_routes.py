@@ -12,8 +12,19 @@ def listings():
     listings = Listing.query.all()
     listings_list = []
     for listing in listings:
-        images = listing.images
         list_item = listing.to_dict()
+        total_ratings = 0
+        reviews = listing.reviews
+        list_item["totalReviews"] = len(reviews)
+        if not len(reviews):
+            list_item["avgRating"] = 0
+        else:
+            for review in reviews:
+                total_ratings += review.rating
+
+            list_item["avgRating"] = total_ratings / len(reviews)
+
+        images = listing.images
         owner = User.query.get(list_item["userId"])
         # print("========LIST ITEM========", owner)
         list_item["owner"] = owner.to_dict()

@@ -55,10 +55,11 @@
 
 .view-listings__reviews {
   position: relative;
-  left: 6%;
+  /* left: 6%; */
   display: flex;
   flex-direction: column;
-  width: fit-content;
+
+  width: 100%;
   gap: 20px;
 }
 
@@ -68,12 +69,39 @@
 
 .review {
   word-wrap: break-word;
-  width: 40%;
+  /* width: 50%; */
   letter-spacing: 0.5px;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgray;
 }
+
+.review-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.add-review {
+  border: 1px solid black;
+  width: fit-content;
+  background-color: var(--main-color);
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  transition: 0.3s ease-in;
+}
+
+.add-review:hover {
+  box-shadow: 0 0 10px rgba(0, 174, 255, 0.8);
+}
+
+.add-review > * {
+  background-color: inherit;
+  color: white;
+}
+
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .view-listing__other {
