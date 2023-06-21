@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { createReviewThunk } from "../../store/listings";
+import StarRatings from 'react-star-ratings';
 
 function CreateReviewModal({listing}) {
   const dispatch = useDispatch();
@@ -31,7 +32,14 @@ function CreateReviewModal({listing}) {
           <textarea placeholder="optional (max characters 255)" maxLength={255} value={context} onChange={e => setContext(e.target.value)}></textarea>
         </label>
         <label>
-          <input value={rating} type="number" min={1} max={5} onChange={e => setRating(e.target.value)}></input>
+          <StarRatings
+            rating={rating}
+            starRatedColor="blue"
+            changeRating={e => setRating(e)}
+            numberOfStars={5}
+            name='rating'
+          />
+          {/* <input value={rating} type="number" min={1} max={5} onChange={e => setRating(e.target.value)}></input> */}
         </label>
         <button type="submit">Submit</button>
       </form>
