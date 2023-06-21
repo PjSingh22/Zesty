@@ -1,4 +1,40 @@
 .listing-card-container {
-  /* width: 25%; */
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 10px rgba(0,0,0, 0.6);
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.3s ease-in;
+}
+
+.listing-card-container:hover {
+  box-shadow: 0 0 20px rgba(0,0,0, 0.6);;
+}
+
+.listing-card-container:hover {
+  cursor: pointer;
+}
+
+.price-and-other {
+  display: flex;
+  justify-content: space-between;
+}
+
+.listing-card__details {
+  display: flex;
+  flex-direction: column;
+}
+
+.listing-card__owner {
+  margin: 10px 0;
+}
+
+.listing-card__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.listing-card__price {
+  font-weight: bold;
 }

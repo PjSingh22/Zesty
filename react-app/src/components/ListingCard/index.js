@@ -18,21 +18,25 @@ function ListingCard({ listing }) {
         <div style={{backgroundImage: `url(${firstImage})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", width: "100%", height: "200px"}}></div>
         <div className="listing-card__details">
           <p>{listing.name}</p>
-          <p>$ {price}</p>
-          <p>By: {owner.username}</p>
+          <p className="listing-card__owner">By: {owner.username}</p>
         </div>
       </div>
-      {user ? user.id === owner.id ? (
-        <>
-          <Link to={`/listings/${id}`}>Edit</Link>
-          <OpenModalButton
-            className="delete-btn"
-            buttonText="Delete"
-            onItemClick={closeModal}
-            modalComponent={<DeleteListingModal listing={listing} id={id} />}
-          />
-        </>
-      ) : null : null}
+      <div className="price-and-other">
+        <p className="listing-card__price">$ {price}</p>
+        {user ? user.id === owner.id ? (
+          <div className="listing-card__buttons">
+            <Link to={`/listings/${id}`}>
+              <i className="fas fa-edit"></i>
+            </Link>
+            <OpenModalButton
+              className="delete-btn"
+              buttonText={<i className="fas fa-trash"></i>}
+              onItemClick={closeModal}
+              modalComponent={<DeleteListingModal listing={listing} id={id} />}
+            />
+          </div>
+        ) : null : null}
+      </div>
     </div>
   )
 }
