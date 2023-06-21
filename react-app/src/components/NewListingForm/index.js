@@ -78,10 +78,10 @@ function NewListingForm() {
           ))}
         </ul>
         <label>
-          <input required minLength={3} maxLength={50} value={prodName} onChange={e => setProdName(e.target.value)} placeholder="Product Name"></input>
+          <input required minLength={3} maxLength={50} value={prodName} onChange={e => setProdName(e.target.value)} placeholder="Product Name (50 characters max)"></input>
         </label>
         <label>
-          <input required type="number" min={1} step="0.01" value={prodPrice} onChange={e => setProdPrice(e.target.value)} placeholder="Product Price"></input>
+          <input required type="number" min={1} max={100} step="0.01" value={prodPrice} onChange={e => setProdPrice(e.target.value)} placeholder="Product Price"></input>
         </label>
         <label>
             category:
@@ -94,7 +94,7 @@ function NewListingForm() {
             </select>
         </label>
         <label>
-          <textarea required value={prodDesc} onChange={e => setProdDesc(e.target.value)} placeholder="Product Description"></textarea>
+          <textarea required value={prodDesc} maxLength={255} onChange={e => setProdDesc(e.target.value)} placeholder="Product Description (255 characters max)"></textarea>
         </label>
         <label>
           <input type="file" accept="image/*" multiple alt="upload image" onChange={handleImageChange}></input>

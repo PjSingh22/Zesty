@@ -17,7 +17,7 @@ function ListingCard({ listing }) {
       <div onClick={() => history.push(`/listings/view/${id}`)} className="listing-card__upper-half">
         <div style={{backgroundImage: `url(${firstImage})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", width: "100%", height: "200px"}}></div>
         <div className="listing-card__details">
-          <p>{listing.name}</p>
+          <p className="listing-card__name">{listing.name}</p>
           <p className="listing-card__owner">By: {owner.username}</p>
         </div>
       </div>

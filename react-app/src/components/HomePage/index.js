@@ -26,7 +26,7 @@ useEffect(() => {
     <div className="home-page-container">
       <div className="home-page__banner">
         <div className="banner__title">
-          <h2>Welcome to Zesty!</h2>
+          <p>Welcome to Zesty!</p>
           <p>Where you will find flavors like no other!</p>
           <div className="links">
           <a href="https://github.com/PjSingh22" target="_blank" rel="noreferrer">

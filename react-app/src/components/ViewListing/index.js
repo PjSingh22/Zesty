@@ -26,7 +26,6 @@ function ViewListing() {
     }
   })
 
-  console.log(images)
   useEffect(() => {
     dispatch(getSingleListingThunk(id));
   }, [dispatch, id])
@@ -52,17 +51,18 @@ function ViewListing() {
   if (!listing) return null
   return (
     <div className="view-listing-container">
-      <div style={{display: "flex", justifyContent: "space-between"}}>
+      <div className="view-listing__other">
         <div className="view-listing__carousel">
           <Carousel images={listing.images} />
         </div>
         <div className="view-listing-info">
-          <h2>$ {listing?.price}</h2>
-          <p>{listing?.name}</p>
-          <p>Free shipping</p>
-          <p>{listing?.owner?.username}</p>
-          <p>Category: {listing?.category}</p>
-          <button onClick={addToCart}>Add Item</button>
+          <p className="info info-price">${listing?.price}</p>
+          <p className="info info-name">{listing?.name}</p>
+          <p className="info info-shipping">Free shipping 😉</p>
+          <p className="info info-owner">{listing?.owner?.username}</p>
+          <p className="info info-cat">Category: {listing?.category}</p>
+          <button onClick={addToCart}>Add To Cart</button>
+          <p className="info info-desc">{listing?.description}</p>
         </div>
         </div>
         <div className="view-listings__reviews">

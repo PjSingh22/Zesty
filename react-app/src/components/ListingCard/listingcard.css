@@ -24,6 +24,7 @@
 .listing-card__details {
   display: flex;
   flex-direction: column;
+  word-wrap: break-word;
 }
 
 .listing-card__owner {
@@ -37,4 +38,8 @@
 
 .listing-card__price {
   font-weight: bold;
+}
+
+.listing-card__name {
+  width: inherit
 }

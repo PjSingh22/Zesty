@@ -27,7 +27,7 @@ function EditReview({ id }) {
       <p>edit review</p>
       <form onSubmit={handleSubmit}>
         <label>
-          <textarea value={context} onChange={e => setContext(e.target.value)}></textarea>
+          <textarea placeholder="optional (max characters 255)" value={context} maxLength={255} onChange={e => setContext(e.target.value)}></textarea>
         </label>
         <label>
           <input type="number" min={1} max={5} value={rating} onChange={e => setRating(e.target.value)}></input>

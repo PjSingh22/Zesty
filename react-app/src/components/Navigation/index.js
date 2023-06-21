@@ -20,8 +20,8 @@ function Navigation({ isLoaded }){
         <div>
           <form>
             <label className='search-bar'>
-              <input type='search' placeholder='Search for anything'></input>
-              <div className='search-icon'>
+              <input onClick={() => alert("feature coming soon!")} type='search' placeholder='Search for anything'></input>
+              <div className='search-icon' onClick={() => alert("feature coming soon!")}>
                 <button className='search-btn' type='submit'><i className="fas fa-search fa-lg"></i></button>
               </div>
             </label>
@@ -32,7 +32,7 @@ function Navigation({ isLoaded }){
             <div>
               {sessionUser && <button className='create-listing' onClick={() => history.push('/listings/new')}>Create Listing</button>}
             </div>
-            <div className='favs'>
+            <div className='favs' onClick={() => alert("feature coming soon!")}>
             <i className="far fa-heart fa-lg"></i>
             </div>
             <div>

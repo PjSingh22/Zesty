@@ -70,11 +70,11 @@ function EditListing() {
         </ul>
           <label>
             Title
-            <input type="text" minLength={3} maxLength={50} value={listName} onChange={(e) => setListName(e.target.value)}/>
+            <input type="text" minLength={3} maxLength={50} value={listName} onChange={(e) => setListName(e.target.value)} placeholder="Product Name (50 characters max)"/>
           </label>
           <label>
             Price
-            <input type="number" step="0.01" min={1} value={listPrice} onChange={(e) => setListPrice(e.target.value)} />
+            <input type="number" step="0.01" min={1} max={100} value={listPrice} onChange={(e) => setListPrice(e.target.value)} />
           </label>
           <label>
             category:
@@ -88,7 +88,7 @@ function EditListing() {
         </label>
           <label>
             Description
-            <textarea type="text" value={listDesc} onChange={(e) => setListDesc(e.target.value)} />
+            <textarea required maxLength={255} type="text" value={listDesc} onChange={(e) => setListDesc(e.target.value)} placeholder="Product Description (255 characters max)" />
           </label>
           {loading ? <button disabled>posting...</button> : <button type="submit">Edit Post</button>}
         </form>
