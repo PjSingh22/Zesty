@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import { cleanUpCartThunk, populateCartThunk } from "../../store/cart";
 import Cartitem from "../CartItem";
 import "./checkoutpage.css"
 
 function CheckoutPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const cart = useSelector(state => state.cart.cart);
   const user = useSelector(state => state.session.user)
   const cartItems = Object.values(cart);
@@ -14,7 +16,8 @@ function CheckoutPage() {
   const checkout = async () => {
     await dispatch(cleanUpCartThunk())
     localStorage.setItem(`cart_${user ? user.id : 0}`, JSON.stringify([]));
-    return alert("Thank you for your purchase!")
+    history.push("/thanks")
+    // return alert("Thank you for your purchase!")
   }
 
   const cartTotal = (cartItems) => {
@@ -33,7 +36,12 @@ function CheckoutPage() {
     dispatch(populateCartThunk(user ? user.id : 0))
   }, [dispatch])
 
-  if (!cartItems.length) return <h1 className="empty-msg">Cart seems to be empty...</h1>
+  if (!cartItems.length) return (
+  <div className="empty-msg">
+    <h1>Cart seems to be empty...</h1>
+    <button onClick={() => history.push("/")} className="create-listing">Back To Home</button>
+  </div>
+  )
   return (
     <div className="checkout-container">
       <div className="cart-items">

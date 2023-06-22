@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ViewListing from "./components/ViewListing";
 import { populateCartThunk } from "./store/cart";
 import CheckoutPage from "./components/CheckoutPage";
+import ThankYouPage from "./components/ThankYouPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <HomePage />
+          </Route>
+          <Route path="/thanks">
+            <ThankYouPage />
           </Route>
           <Route path='/cart'>
             <CheckoutPage />

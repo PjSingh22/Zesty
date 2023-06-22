@@ -39,6 +39,8 @@
 
 .empty-msg {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
   min-height: 90vh;
   justify-content: center;
   align-items: center;

@@ -1,0 +1,35 @@
+.tech {
+  /* height: 50px; */
+  width: 80px
+}
+
+.thank-you-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  height: 90vh;
+  font-size: 30px;
+}
+
+.thank-you-page > h1 {
+  color: var(--main-color)
+}
+
+.tools-used-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.tools-used-container > h2 {
+  text-decoration: underline;
+}
+
+.tools-used {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
