@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { populateCartThunk } from "../../store/cart";
+import { cleanUpCartThunk, populateCartThunk } from "../../store/cart";
 import Cartitem from "../CartItem";
 import "./checkoutpage.css"
 
@@ -9,6 +9,27 @@ function CheckoutPage() {
   const cart = useSelector(state => state.cart.cart);
   const user = useSelector(state => state.session.user)
   const cartItems = Object.values(cart);
+  const [total, setTotal] = useState(0)
+
+  const checkout = async () => {
+    await dispatch(cleanUpCartThunk())
+    localStorage.setItem(`cart_${user.id ? user.id : 0}`, JSON.stringify([]));
+    return alert("Thank you for your purchase!")
+  }
+
+  const cartTotal = (cartItems) => {
+    let total = cartItems.reduce((accum, curr) => accum += (curr.price * curr.quantity) , 0);
+    return total;
+  }
+
+  const subTotal = () => {
+    let total = cartTotal(cartItems)
+    let tax = cartTotal(cartItems) * .9
+
+    console.log(typeof total)
+    console.log(typeof tax)
+    return (total + tax).toFixed(2)
+  }
 
   useEffect(() => {
     dispatch(populateCartThunk(user ? user.id : 0))
@@ -18,17 +39,25 @@ function CheckoutPage() {
   return (
     <div className="checkout-container">
       <div className="cart-items">
-      <p>{cartItems.length} in your cart.</p>
+        <p className="cart-amount">{cartItems.length} in your cart.</p>
         {cartItems?.map(item => {
           return <Cartitem cartItem={item} key={item.id} />
         })}
       </div>
       <div className="checkout-details">
-        <div className="checkout-total">
+        <div className="checkout-total checkout-price">
           <p>Total:</p>
-          <p>$200.00</p>
+          <p>${cartTotal(cartItems).toFixed(2)}</p>
         </div>
-        <button>Proceed to checkout</button>
+        <div className="checkout-tax checkout-price">
+          <p>Tax:</p>
+          <p>${(cartTotal(cartItems) * .09).toFixed(2)}</p>
+        </div>
+        <div className="sub-total checkout-price">
+          <p>Subtoal:</p>
+          <p>${subTotal()}</p>
+        </div>
+        <button onClick={checkout}>Checkout</button>
       </div>
     </div>
   )

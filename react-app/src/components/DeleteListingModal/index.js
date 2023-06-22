@@ -2,6 +2,7 @@ import { useModal } from "../../context/Modal"
 import { useDispatch } from "react-redux";
 import { deleteListingThunk } from "../../store/listings";
 import { useState } from "react";
+import "./deletelistingmodal.css";
 
 function DeleteListingModal({ listing, id }) {
   const dispatch = useDispatch();
@@ -15,11 +16,11 @@ function DeleteListingModal({ listing, id }) {
     closeModal()
   }
   return (
-    <div>
+    <div className="delete-modal">
       <h1>Delete this listing?</h1>
       {loading ? <p>deleting...</p> : (
         <div>
-          <button onClick={closeModal}>Cancel</button>
+          <button onClick={closeModal}>No</button>
           <button onClick={handleDelete}>Yes</button>
         </div>
       )}

@@ -31,10 +31,12 @@ function Cartitem({ cartItem }) {
   }
 
   return (
-    <Link to={`/listings/view/${cartItem.id}`} className="cartItem-container">
-      <div className="cartItem-image" style={{backgroundImage: `url(${images[0].imageUrl})`}}></div>
+    <div className="cartItem-container">
+      <Link to={`/listings/view/${cartItem.id}`}><div className="cartItem-image" style={{backgroundImage: `url(${images[0].imageUrl})`}}></div></Link>
       <div className="cartItem-details">
-        <p>{name}</p>
+        <Link to={`/listings/view/${cartItem.id}`}>
+          <p>{name}</p>
+        </Link>
         <div className='cartItem-quantity'>
           <button onClick={decrement}>{`<`}</button>
           <p>{count}</p>
@@ -42,8 +44,8 @@ function Cartitem({ cartItem }) {
         </div>
         <button onClick={removeItem}>Remove Item</button>
       </div>
-      <p className="cartItem-price">{price}</p>
-    </Link>
+      <p className="cartItem-price">${price}</p>
+    </div>
   )
 }
 

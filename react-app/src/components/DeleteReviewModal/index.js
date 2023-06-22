@@ -16,7 +16,7 @@ function DeleteReviewModal({listingId, id}) {
   }
 
   return (
-    <div>
+    <div className="delete-modal">
       <h1>Delete this review?</h1>
       { loading ? <p>deleting</p> : (
         <div>

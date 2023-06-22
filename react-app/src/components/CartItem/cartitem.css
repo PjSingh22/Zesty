@@ -1,10 +1,12 @@
 .cartItem-container {
   display: flex;
-  border: 1px solid blue;
+  border: none;
   /* width: 80%; */
   justify-content: space-between;
   gap: 10px;
-  padding: 20px;
+  padding: 25px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 18px grey;
 }
 
 .cartItem-image {
@@ -18,15 +20,38 @@
 .cartItem-details {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 20px;
 }
 
 .cartItem-quantity {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
 .cartItem-price {
   position: relative;
   float: right;
+}
+
+.cartItem-quantity > button {
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.cartItem-quantity > button:target {
+  background-color: lightgray;
+}
+
+.cartItem-details > button {
+  width: fit-content;
+  background-color: white;
+  border: none;
+  font-size: 15px;
+  text-decoration: underline;
+}
+.cartItem-details > button::before {
+  content: "X ";
 }

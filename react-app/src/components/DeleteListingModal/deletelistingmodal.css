@@ -1,0 +1,32 @@
+.delete-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.delete-modal > div {
+  display: flex;
+  gap: 20px;
+}
+
+.delete-modal > div > button {
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  width: 5vw;
+  transition: 0.2s ease-in;
+}
+
+.delete-modal > div > button:hover {
+  box-shadow: 0 0 10px grey;
+}
+
+.delete-modal > div > button:first-child {
+  background-color: #8388A4;
+}
+
+.delete-modal > div > button:last-child {
+  background-color: #ED5E68;
+}
