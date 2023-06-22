@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createListingThunk } from "../../store/listings";
 import { useHistory } from "react-router-dom";
+import "./newlistingform.css"
 
 function NewListingForm() {
   const dispatch = useDispatch();
@@ -69,7 +70,7 @@ function NewListingForm() {
   };
 
   return (
-    <div className="new-listing-container">
+    <div className="new-listing-container form-container">
       <h2>Create a New Listing</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <ul>
@@ -97,9 +98,9 @@ function NewListingForm() {
           <textarea required value={prodDesc} maxLength={255} onChange={e => setProdDesc(e.target.value)} placeholder="Product Description (255 characters max)"></textarea>
         </label>
         <label>
-          <input type="file" accept="image/*" multiple alt="upload image" onChange={handleImageChange}></input>
+          <input className="upload-img" type="file" accept="image/*" multiple alt="upload image" onChange={handleImageChange}></input>
         </label>
-        {loading ? <button disabled>posting...</button> : <button type="submit">Create Post</button>}
+        {loading ? <button disabled>posting...</button> : <button className="submit-listing" type="submit">Create Post</button>}
       </form>
     </div>
   )

@@ -54,7 +54,7 @@ function ProfileButton({ user }) {
             </li>
           </>
         ) : (
-          <>
+          <div className="no-user-btns">
             <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
@@ -67,7 +67,7 @@ function ProfileButton({ user }) {
               modalComponent={<SignupFormModal />}
             />
             <button onClick={() => dispatch(login("demo@aa.io", "password"))}>Demo user</button>
-          </>
+          </div>
         )}
       </ul>
     </>

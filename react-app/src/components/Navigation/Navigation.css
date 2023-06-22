@@ -11,6 +11,19 @@
   gap: 10px;
 }
 
+.no-user-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* padding: 0 15px; */
+}
+
+.no-user-btns > * {
+  border: 1px solid black;
+  background-color: white;
+  padding: 5px 15px;
+}
+
 .hidden {
   display: none;
 }

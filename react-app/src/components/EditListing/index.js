@@ -54,14 +54,13 @@ function EditListing() {
 
     await dispatch(editListingThunk(updatedListing, id));
 
-    history.push("/")
+    history.push(`/listings/view/${listing.id}`)
   }
 
   if (listing && listing.errors) return <h2>{listing.errors}</h2>;
   return (
-    <>
+    <div className="form-container">
       <h2>Edit Listing</h2>
-      <div>
         <form onSubmit={handleSubmit}>
         <ul>
           {Object.values(errors).map((error, idx) => (
@@ -92,8 +91,7 @@ function EditListing() {
           </label>
           {loading ? <button disabled>posting...</button> : <button type="submit">Edit Post</button>}
         </form>
-      </div>
-    </>
+    </div>
   )
 }
 
