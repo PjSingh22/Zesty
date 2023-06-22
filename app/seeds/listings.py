@@ -31,7 +31,7 @@ def seed_listings():
        user_id=2,
        price=3.99,
        category="soup",
-       description="TThis one is for the Japanese curry fans! If you’re craving that iconic thick, sweet-and-salty dish and want it now, try it with some ramen. And where better to get your instant fix than from the company that created the very first “cup of noodles?” Japanese curry is milder, sweeter, and thicker than those of other cuisines. Try it yourself—all you need is some boiled water and a couple minutes!"
+       description="This one is for the Japanese curry fans! If you’re craving that iconic thick, sweet-and-salty dish and want it now, try it with some ramen. And where better to get your instant fix than from the company that created the very first “cup of noodles?” Japanese curry is milder, sweeter, and thicker than those of other cuisines. Try it yourself—all you need is some boiled water and a couple minutes!"
     ),
     Listing(
        name="Japanese Kit Kat: Cheesecake",

@@ -24,10 +24,8 @@ function CheckoutPage() {
 
   const subTotal = () => {
     let total = cartTotal(cartItems)
-    let tax = cartTotal(cartItems) * .9
+    let tax = cartTotal(cartItems) * .09
 
-    console.log(typeof total)
-    console.log(typeof tax)
     return (total + tax).toFixed(2)
   }
 
@@ -54,7 +52,7 @@ function CheckoutPage() {
           <p>${(cartTotal(cartItems) * .09).toFixed(2)}</p>
         </div>
         <div className="sub-total checkout-price">
-          <p>Subtoal:</p>
+          <p>Subtotal:</p>
           <p>${subTotal()}</p>
         </div>
         <button onClick={checkout}>Checkout</button>

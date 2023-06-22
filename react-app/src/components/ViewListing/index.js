@@ -28,6 +28,12 @@ function ViewListing() {
     }
   })
 
+  const dateConversion = (date) => {
+    let split = date.split(" ");
+    let newDate = `${split[2]} ${split[3]}`;
+    return newDate
+  }
+
   useEffect(() => {
     dispatch(getSingleListingThunk(id));
   }, [dispatch, id])
@@ -101,7 +107,7 @@ function ViewListing() {
                 />
                 {/* <h2 className="review-rating">{review.rating}</h2> */}
                 <p className="review-context">{review.context}</p>
-                <p className="review-user">- {review.username}</p>
+                <p className="review-user">- {review.username}, {dateConversion(review.createdAt)}</p>
                 {user ? user.id === review.userId ?
                   <div className="review-btns">
                     <OpenModalButton
