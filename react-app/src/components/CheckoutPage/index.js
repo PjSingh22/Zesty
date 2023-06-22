@@ -13,7 +13,7 @@ function CheckoutPage() {
 
   const checkout = async () => {
     await dispatch(cleanUpCartThunk())
-    localStorage.setItem(`cart_${user.id ? user.id : 0}`, JSON.stringify([]));
+    localStorage.setItem(`cart_${user ? user.id : 0}`, JSON.stringify([]));
     return alert("Thank you for your purchase!")
   }
 
@@ -37,7 +37,7 @@ function CheckoutPage() {
   return (
     <div className="checkout-container">
       <div className="cart-items">
-        <p className="cart-amount">{cartItems.length} in your cart.</p>
+        <p className="cart-amount">{cartItems.length} {cartItems.length === 1? "item" : "items"} in your cart.</p>
         {cartItems?.map(item => {
           return <Cartitem cartItem={item} key={item.id} />
         })}
