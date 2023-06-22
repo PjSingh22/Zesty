@@ -14,7 +14,7 @@ function CheckoutPage() {
     dispatch(populateCartThunk(user ? user.id : 0))
   }, [dispatch])
 
-  if (!cartItems.length) return <h1>Cart seems to be empty...</h1>
+  if (!cartItems.length) return <h1 className="empty-msg">Cart seems to be empty...</h1>
   return (
     <div className="checkout-container">
       <div className="cart-items">

@@ -69,7 +69,7 @@ function ViewListing() {
         </div>
         <div className="view-listings__reviews">
           <h2>Reviews</h2>
-          {user ?
+          {user && user.id !== listing?.userId ?
           <div className="add-review">
             <OpenModalButton
             className="create-rev-btn add-review"

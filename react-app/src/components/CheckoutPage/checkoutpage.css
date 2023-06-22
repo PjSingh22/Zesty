@@ -20,3 +20,12 @@
   width: 30%;
   justify-self: flex-end;
 }
+
+.empty-msg {
+  display: flex;
+  min-height: 90vh;
+  justify-content: center;
+  align-items: center;
+  /* position: relative;
+  top: 50%; */
+}

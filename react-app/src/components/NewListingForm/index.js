@@ -79,9 +79,11 @@ function NewListingForm() {
           ))}
         </ul>
         <label>
+          Title
           <input required minLength={3} maxLength={50} value={prodName} onChange={e => setProdName(e.target.value)} placeholder="Product Name (50 characters max)"></input>
         </label>
         <label>
+          Price
           <input required type="number" min={1} max={100} step="0.01" value={prodPrice} onChange={e => setProdPrice(e.target.value)} placeholder="Product Price"></input>
         </label>
         <label>
@@ -95,6 +97,7 @@ function NewListingForm() {
             </select>
         </label>
         <label>
+          Description
           <textarea required value={prodDesc} maxLength={255} onChange={e => setProdDesc(e.target.value)} placeholder="Product Description (255 characters max)"></textarea>
         </label>
         <label>

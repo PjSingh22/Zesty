@@ -1,0 +1,22 @@
+.review-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+.review-container > form > label > textarea {
+  width: 100%;
+}
+
+.review-container > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40vw;
+  padding: 10px 0;
+  gap: 10px;
+}
+
+.review-container > form > label:first-child {
+  width: 30vw;
+}

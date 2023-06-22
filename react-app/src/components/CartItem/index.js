@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./cartitem.css"
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import { addItemThunk, decrementCountThunk, removeItemThunk } from "../../store/cart";
+import "./cartitem.css"
 
 function Cartitem({ cartItem }) {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function Cartitem({ cartItem }) {
   }
 
   return (
-    <div className="cartItem-container">
+    <Link to={`/listings/view/${cartItem.id}`} className="cartItem-container">
       <div className="cartItem-image" style={{backgroundImage: `url(${images[0].imageUrl})`}}></div>
       <div className="cartItem-details">
         <p>{name}</p>
@@ -42,7 +43,7 @@ function Cartitem({ cartItem }) {
         <button onClick={removeItem}>Remove Item</button>
       </div>
       <p className="cartItem-price">{price}</p>
-    </div>
+    </Link>
   )
 }
 
