@@ -20,6 +20,7 @@ function Navigation({ isLoaded }){
     if (search) {
       dispatch(findListingsThunk(search))
     }
+    setSearch("");
   }
 	return (
     <div className='nav-container'>

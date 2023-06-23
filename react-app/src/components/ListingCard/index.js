@@ -15,8 +15,10 @@ function ListingCard({ listing }) {
 
   return (
     <div className="listing-card-container">
+      {user && <i className="far fa-heart like-card"></i>}
       <div onClick={() => history.push(`/listings/view/${id}`)} className="listing-card__upper-half">
-        <div style={{backgroundImage: `url(${firstImage})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", width: "100%", height: "200px"}}></div>
+        <div style={{backgroundImage: `url(${firstImage})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", width: "100%", height: "200px"}}>
+        </div>
         <div className="listing-card__details">
           <p className="listing-card__name">{listing.name}</p>
           { listing.avgRating ?
