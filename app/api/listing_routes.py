@@ -37,7 +37,7 @@ def listings():
 def find_listings():
     queryStr = request.args.get("query")
 
-    listings = Listing.query.filter(Listing.name.like(f"%{queryStr}%")).all()
+    listings = Listing.query.filter(Listing.name.ilike(f"%{queryStr}%")).all()
     listings_list = []
 
     for listing in listings:
