@@ -33,6 +33,33 @@ def listings():
 
     return listings_list
 
+@listing_routes.route("/search")
+def find_listings():
+    queryStr = request.args.get("query")
+
+    listings = Listing.query.filter(Listing.name.like(f"%{queryStr}%")).all()
+    listings_list = []
+
+    for listing in listings:
+        list_item = listing.to_dict()
+        total_ratings = 0
+        reviews = listing.reviews
+        list_item["totalReviews"] = len(reviews)
+        if not len(reviews):
+            list_item["avgRating"] = 0
+        else:
+            for review in reviews:
+                total_ratings += review.rating
+
+            list_item["avgRating"] = total_ratings / len(reviews)
+
+        images = listing.images
+        owner = User.query.get(list_item["userId"])
+        list_item["owner"] = owner.to_dict()
+        list_item["images"] = [image.to_dict() for image in images]
+        listings_list.append(list_item)
+    return listings_list
+
 
 @listing_routes.route("/new", methods=["POST"])
 @login_required

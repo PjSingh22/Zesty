@@ -101,6 +101,98 @@ def seed_listing_images():
       listing_id= 12,
       image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118559682500493342/BG11141JapaneseRamenHotMisoBokksu221092_600x.webp"
     ),
+    ListingImage(
+      listing_id= 13,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121575478944350208/BG11661_LaysChipsTokoyoYakitori_01_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 13,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121575478529118300/BG11661_LaysChipsTokoyoYakitori_Texture_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 13,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121575841609031690/BG11661_LaysChipsTokoyoYakitori_Nutrition_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 14,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121576395726934036/BG10082GoldenCurrySauceMixMild_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 14,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121576396175708280/GoldenCurry_MediumHot_003_25de8762-5ec3-4d67-84ff-2b439bc065d1_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 15,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121578186661175369/BG10195TempuraBatterMixGlutenFree_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 15,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121578186992521306/BG10195_GlutenFreeTempuraMix_003_Nutrition_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 16,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121579317336490084/FZ10023_KarageChicken_001_Package_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 16,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121579317747527852/FZ10023_KarageChicken_003_Nutrition_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 17,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121579943210528818/BG11328_PockyChocolateBananaCream_001_Package_800x.webp"
+    ),
+    ListingImage(
+      listing_id= 17,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121579943688675468/BG11328_PockyChocolateBananaCream_002_Texture_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 17,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121579944099721276/BG11328_PockyChocolateBananaCream_003_Nutrition_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 18,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121580399290757211/BG11327_PockyCrunchyStrawberry_001_Package_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 18,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121580399735345252/BG11327_PockyCrunchyStrawberry_002_Texture_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 18,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121580398892290118/BG11327_PockyCrunchyStrawberry_003_Nutrition_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 19,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121581020773367849/BG10750SweetandSPicyTopokkiRice_69e96c74-1c84-47df-9a5f-978926b47443_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 19,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121581021117288611/BG10750SweetandSPicyTopokkiRice2_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 20,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121581605182513222/BG10268-TonkotsuRamen_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 20,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121581605559996547/Menraku_TonkotsuRamen_003_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 21,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121583793233465374/BG10274AburaSobaSoupless_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 21,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121583792738541608/AburaSobaSoupless_003_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 22,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121587081454559333/BG10150CalpicoStrawberry_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 22,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121587081102229534/Calpico_Strawberry_003_600x.webp"
+    ),
   ]
 
    for image in listing_images:

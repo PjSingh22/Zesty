@@ -1,28 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import { findListingsThunk, getAllListingsThunk } from '../../store/listings';
 
 
 function Navigation({ isLoaded }){
-  const history = useHistory()
+  const dispatch = useDispatch();
+  const history = useHistory();
 	const sessionUser = useSelector(state => state.session.user);
-  const cart = useSelector(state => state.cart.cart)
-  const cartLength = Object.values(cart).length
+  const cart = useSelector(state => state.cart.cart);
+  const cartLength = Object.values(cart).length;
+  const [search, setSearch] = useState("");
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    if (search) {
+      dispatch(findListingsThunk(search))
+    }
+  }
 	return (
     <div className='nav-container'>
 
       <div className='nav-bar'>
         <div>
-          <NavLink exact to="/"><div className='logo'></div></NavLink>
+          <NavLink exact to="/"><div onClick={() => dispatch(getAllListingsThunk())} className='logo'></div></NavLink>
         </div>
         <div>
           <form>
             <label className='search-bar'>
-              <input onClick={() => alert("feature coming soon!")} type='search' placeholder='Search for anything'></input>
-              <div className='search-icon' onClick={() => alert("feature coming soon!")}>
-                <button className='search-btn' type='submit'><i className="fas fa-search fa-lg"></i></button>
+              <input onChange={e => setSearch(e.target.value)} type='search' placeholder='Search for anything'></input>
+              <div className='search-icon'>
+                <button onClick={handleSearch} className='search-btn' type='submit'><i className="fas fa-search fa-lg"></i></button>
               </div>
             </label>
           </form>

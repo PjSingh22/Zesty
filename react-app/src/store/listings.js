@@ -3,6 +3,7 @@ const CREATE_LISTING = "listings/createListing";
 const GET_SINGLE_LISTING = "listings/singleListing";
 const EDIT_LISTING = "listings/editListing";
 const DELETE_LISTING = "listings/deleteListing";
+const FIND_LISTINGS = "listings/search"
 
 const DELETE_REVIEW = "reviews/delete"
 const EDIT_REVIEW = "reviews/edit"
@@ -24,6 +25,11 @@ const deleteReview = (listingId, id) => ({
     listingId,
     id
   }
+})
+
+const findListings = (listings) => ({
+  type: FIND_LISTINGS,
+  payload: listings
 })
 
 const deleteListing = (listing) => ({
@@ -111,6 +117,15 @@ export const deleteListingThunk = (listing, id) => async dispatch => {
   }
 }
 
+export const findListingsThunk = (searchQuery) => async dispatch => {
+  const res = await fetch(`/api/listings/search?query=${searchQuery}`)
+
+  if (res.ok) {
+    const data = await res.json()
+    await dispatch(getAllListings(data));
+  }
+}
+
 export const editListingThunk = (listing, id) => async dispatch => {
   const res = await fetch(`/api/listings/${id}`, {
     method: "PUT",
@@ -191,6 +206,10 @@ const listingReducer = (state = initialState, action) => {
       const allListings = { listings: {} }
       action.payload.forEach(listing => allListings.listings[listing.id] = listing);
       return allListings;
+    // case FIND_LISTINGS: {
+    //   const foundListings = { listings: {} }
+    //   action.payload.forEach(listing => allListings.listings)
+    // }
     case GET_SINGLE_LISTING:
       const singleListingState = { ...state, singleListing: {} }
       singleListingState.singleListing = {...action.payload}
