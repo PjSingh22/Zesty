@@ -13,6 +13,7 @@ import ViewListing from "./components/ViewListing";
 import { populateCartThunk } from "./store/cart";
 import CheckoutPage from "./components/CheckoutPage";
 import ThankYouPage from "./components/ThankYouPage";
+import LikesPage from "./components/LikesPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,12 +36,12 @@ function App() {
           <Route path='/cart'>
             <CheckoutPage />
           </Route>
+          <ProtectedRoute path="/likes">
+            <LikesPage />
+          </ProtectedRoute>
           <ProtectedRoute path="/listings/new">
             <NewListingForm />
           </ProtectedRoute>
-          {/* <Route path="/listings/new">
-            <NewListingForm />
-          </Route> */}
           <Route path="/listings/view/:id">
             <ViewListing />
           </Route>

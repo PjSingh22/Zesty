@@ -31,7 +31,7 @@ function ListingCard({ listing }) {
     }
   }
 
-  const renderHeart = liked ? <i onClick={handleLike} class="like-card fas fa-heart" style={{color: "red"}}></i> : <i onClick={handleLike} className="like-card far fa-heart"></i>
+  const renderHeart = liked ? <i onClick={handleLike} className="like-card fas fa-heart" style={{color: "red"}}></i> : <i onClick={handleLike} className="like-card far fa-heart"></i>
 
   return (
     <div className="listing-card-container">

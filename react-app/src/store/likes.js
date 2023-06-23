@@ -56,9 +56,13 @@ const initialState = {}
 const likesReducer = (state = initialState, action) => {
   switch(action.type) {
     case GET_LIKES:
-      return {...action.payload}
+      const allLikes = {}
+      action.payload.forEach(listing => allLikes[listing.id] = listing)
+      return allLikes;
     case ADD_LIKE:
-      return { ...state, ...action.payload}
+      const addItemState = { ...state }
+      addItemState[action.payload.id] = action.payload
+      return addItemState
     case DELETE_LIKE:
       const likes = { ...state }
       const filtered = Object.values(likes).filter(like => like.id !== action.payload.id);

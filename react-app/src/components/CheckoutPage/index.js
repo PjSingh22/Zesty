@@ -38,8 +38,7 @@ function CheckoutPage() {
 
   if (!cartItems.length) return (
   <div className="empty-msg">
-    <h1>Cart seems to be empty...</h1>
-    <button onClick={() => history.push("/")} className="create-listing">Back To Home</button>
+
   </div>
   )
   return (

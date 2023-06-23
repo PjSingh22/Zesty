@@ -44,7 +44,7 @@ function Navigation({ isLoaded }){
             <div>
               {sessionUser && <button className='create-listing' onClick={() => history.push('/listings/new')}>Create Listing</button>}
             </div>
-            <div className='favs' onClick={() => alert("feature coming soon!")}>
+            <div className='favs' onClick={() => history.push("/likes")}>
             <i className="far fa-heart fa-lg"></i>
             </div>
             <div>
