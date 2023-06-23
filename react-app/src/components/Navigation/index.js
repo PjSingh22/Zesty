@@ -32,7 +32,7 @@ function Navigation({ isLoaded }){
         <div>
           <form>
             <label className='search-bar'>
-              <input onChange={e => setSearch(e.target.value)} type='search' placeholder='Search for anything'></input>
+              <input className="search-thing" onChange={e => setSearch(e.target.value)} type='search' placeholder='Search for anything'></input>
               <div className='search-icon'>
                 <button onClick={handleSearch} className='search-btn' type='submit'><i className="fas fa-search fa-lg"></i></button>
               </div>

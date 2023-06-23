@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import ListingCard from "../ListingCard";
 import { populateCartThunk } from "../../store/cart";
 import "./homepage.css";
+import { getLikesThunk } from "../../store/likes";
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -16,7 +17,11 @@ function HomePage() {
     dispatch(getAllListingsThunk())
   }, [dispatch])
 
-useEffect(() => {
+  useEffect(() => {
+    return user ? dispatch(getLikesThunk()) :  null
+  }, [dispatch])
+
+  useEffect(() => {
     dispatch(populateCartThunk(user ? user.id : 0))
   }, [dispatch])
 

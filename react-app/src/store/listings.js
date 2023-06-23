@@ -27,11 +27,6 @@ const deleteReview = (listingId, id) => ({
   }
 })
 
-const findListings = (listings) => ({
-  type: FIND_LISTINGS,
-  payload: listings
-})
-
 const deleteListing = (listing) => ({
   type: DELETE_LISTING,
   payload: listing
@@ -206,10 +201,6 @@ const listingReducer = (state = initialState, action) => {
       const allListings = { listings: {} }
       action.payload.forEach(listing => allListings.listings[listing.id] = listing);
       return allListings;
-    // case FIND_LISTINGS: {
-    //   const foundListings = { listings: {} }
-    //   action.payload.forEach(listing => allListings.listings)
-    // }
     case GET_SINGLE_LISTING:
       const singleListingState = { ...state, singleListing: {} }
       singleListingState.singleListing = {...action.payload}

@@ -1,21 +1,41 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import "./listingcard.css";
 import OpenModalButton from "../OpenModalButton";
 import DeleteListingModal from "../DeleteListingModal";
 import StarRatings from 'react-star-ratings';
+import { addLikeThunk, deleteLikeThunk } from "../../store/likes";
+import { useState } from "react";
 
 function ListingCard({ listing }) {
   const { images, price, owner, id } = listing;
   const { closeModal } = useModal();
+  const dispatch = useDispatch()
   const history = useHistory();
   const user = useSelector(state => state.session.user);
+  const likes = useSelector(state => state.likes)
+  const likesObj = Object.values(likes);
+  const foundLike = likesObj.find(likedItem => likedItem.id === listing.id);
+  const [liked, setLiked] = useState(foundLike ? true : false);
   const firstImage = images.length !== 0 ? images[0].imageUrl : "https://silverhillsbakery.ca/wp-content/uploads/2019/02/SHB_Canada-FoodGuide_1200x800_BLOG-1200x800-c-default.jpg";
+
+
+  const handleLike = async (e) => {
+    if (!liked) {
+      await dispatch(addLikeThunk(id, listing))
+      setLiked(true);
+    } else {
+      await dispatch(deleteLikeThunk(id, listing))
+      setLiked(false)
+    }
+  }
+
+  const renderHeart = liked ? <i onClick={handleLike} class="like-card fas fa-heart" style={{color: "red"}}></i> : <i onClick={handleLike} className="like-card far fa-heart"></i>
 
   return (
     <div className="listing-card-container">
-      {user && <i className="far fa-heart like-card"></i>}
+      {user && renderHeart}
       <div onClick={() => history.push(`/listings/view/${id}`)} className="listing-card__upper-half">
         <div style={{backgroundImage: `url(${firstImage})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", width: "100%", height: "200px"}}>
         </div>

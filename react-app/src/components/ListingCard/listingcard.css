@@ -54,3 +54,7 @@
 .like-card {
   position: absolute;
 }
+
+.fa-heart {
+  width: fit-content;
+}
