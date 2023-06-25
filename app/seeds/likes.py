@@ -5,7 +5,13 @@ def seed_likes():
     users = User.query.all()
     listings = Listing.query.all()
 
-    users[0].likes.append(listings[0])
+    users[0].likes.append(listings[3])
+    users[0].likes.append(listings[6])
+    users[0].likes.append(listings[9])
+    users[0].likes.append(listings[12])
+    users[0].likes.append(listings[15])
+    users[0].likes.append(listings[18])
+    users[0].likes.append(listings[21])
 
     db.session.commit()
 
