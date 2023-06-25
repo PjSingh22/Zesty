@@ -193,6 +193,94 @@ def seed_listing_images():
       listing_id= 22,
       image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1121587081102229534/Calpico_Strawberry_003_600x.webp"
     ),
+    ListingImage(
+      listing_id= 23,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122328830837788712/BG10198MiniBaumkuchenChocolate_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 23,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122328831227854900/MiniBaumkuchen_Chocolate_002_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 23,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122328831588581386/MiniBaumkuchen_Chocolate_003_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 24,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122329577637822484/BG10288KimChiRamen_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 24,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122329577239347210/KimchiRamen_003_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 25,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122330062436442133/BG10117RaYuChiliOilwithCrunchyGarlic_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 25,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122330062834909194/CrunchyGarlicChiliOil_002_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 25,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122330063229161585/CrunchyGarlicChiliOil_003_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 26,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122330924051337297/BG10103SrirachaMayo_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 26,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122330924995059783/Kikkoman_SrirachaMayo_002_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 26,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122330925427069008/Kikkoman_SrirachaMayo_003_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 27,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122331638827859978/BG10187OtafukuOkonomiSauce_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 27,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122331639285043251/BG10187_OkonomiSauce_003_Nutrition_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 28,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122332117074985121/BG10121FurikakeRiceSeasoningSetoFumi_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 28,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122332117481816095/BG10121-_Seto-Fumi-Furikake-Rice-Seasoning_003_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 28,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122332117867712562/BG10121_Seto-Fumi-Furikake-Rice-Seasoning_002_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 29,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122332957944840333/BG10824ToastedWhiteSeasomeSeeds_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 29,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122332958368473168/BG10824ToastedWhiteSeasomeSeeds3_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 29,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122332958762729584/BG10824ToastedWhiteSeasomeSeeds2_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 30,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122333700663804005/BG10330AjinomotoHondashiSoupStock_cd87798b-7b34-4825-afb6-a616929c5491_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 30,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122333701133586526/BG10330-Hondashi4149-1_600x.webp"
+    ),
+    ListingImage(
+      listing_id= 30,
+      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1122333701624303616/BG10330-Hondashi4147-1_600x.webp"
+    ),
   ]
 
    for image in listing_images:

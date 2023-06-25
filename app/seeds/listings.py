@@ -6,14 +6,14 @@ from sqlalchemy.sql import text
 def seed_listings():
    listings = [
     Listing(
-       name= "Lay's Potato Chips: Kobe Steak",
+       name= "Lays Potato Chips: Kobe Steak",
        user_id=1,
        price= 3.49,
        category="snacks",
        description="Take your taste buds on an around-the-world culinary adventure with the snacks you know and love. Ultra buttery and savory, these Taiwanese-exclusive Lay’s Potato Chips taste like the famous and luxurious Kobe steak from Japan!"
     ),
     Listing(
-       name= "Lay's Potato Chips: Rib Eye Steak with Black Truffle",
+       name= "Lays Potato Chips: Rib Eye Steak with Black Truffle",
        user_id=1,
        price=3.49,
        category="snacks",
@@ -92,7 +92,7 @@ def seed_listings():
        description="Like the classics but looking for a little spice? Try this Flaming Hot Miso ramen! It boasts a classic creamy and full-bodied miso broth accented with hot chilis. This instant ramen also includes tofu and vegetables, so it's a full meal you can enjoy in just minutes!"
     ),
     Listing(
-       name="Lay's Potato Chips: Tokyo Yakitori Grilled Chicken",
+       name="Lays Potato Chips: Tokyo Yakitori Grilled Chicken",
        user_id=4,
        price=3.99,
        category="snacks",
@@ -156,12 +156,70 @@ def seed_listings():
        category="soups",
        description="This ramen is abura soba style, meaning it's tossed with sauce, rather than a soup broth. Abura soba style is trending in Tokyo right now, so we're very excited to bring this bowl to you! The sauce is flavored with soy, rice vinegar, and spices. Top your ramen with the included cabbage, green onion, and bamboo shoots and your favorite protein for a delicious meal."
     ),
+    # 22
     Listing(
        name="Asahi Calpico: Strawberry",
        user_id=7,
        price=3.99,
        category="drinks",
        description="Strawberry Calpico may be one of the cutest beverages you'll ever have. The opaque pink yogurt drink contains lactic acid for a touch of tang. One sip and you'll agree -- it tastes like real summer strawberries."
+    ),
+    Listing(
+       name="Suzuya Mini Baumkuchen: Chocolate",
+       user_id=8,
+       price=2.75,
+       category="dessert",
+       description="Baumkuchen is an incredibly popular cake in Japan, introduced by Germany in the 20th Century. Baumkuchen means 'tree cake' because its design looks just like the rings of a tree! You'll love the marriage of buttery cake with decadent chocolate."
+    ),
+    Listing(
+       name="Jongga Kimchi Ramen",
+       user_id=8,
+       price=3.49,
+       category="soups",
+       description="Maker Jongga is Korea's #1 kimchi brand known for its authentic fresh kimchi. Using their expertise, they have created an irresistible kimchi ramen. The broth itself is hot and sour, but the included real kimchi packet really brings these Korean spicy noodles over the top."
+    ),
+    Listing(
+       name="S&B Rayu Chili Oil with Crunchy Garlic",
+       user_id=8,
+       price=8.99,
+       category="condiments",
+       description="Despite its fiery red coloring, this oil isn't so extraordinarily hot that you can't use it for meals with your spice-sensitive friends. Along with the obvious crunchy fried garlic and chili paste, you'll find almonds, ground sesame seeds, and sesame oil: all of which brings forth a deep, nutty flavor that stands out in any dish, whether it be plain tofu, a salad, or a fully cooked noodle dish."
+    ),
+    # 26
+    Listing(
+       name="Kikkoman Sriracha Mayo",
+       user_id=9,
+       price=6.49,
+       category="condiments",
+       description="Ready for a new secret sauce? Kikkoman's Sriracha Mayo combines smooth mayo with some extra heat from its popular red spice blend. The result is an easy-to-use condiment that doesn't just add a little spiciness: it brings a ton of flavor, too. Use it on your sandwiches, or dip your fries. Anything mayo can do, Sriracha Mayo can do better."
+    ),
+    Listing(
+       name="Otafuku Okonomi Sauce",
+       user_id=9,
+       price=6.49,
+       category="condiments",
+       description="This sauce is so incredible, you'll want to drizzle it on anything you make! You'll taste an explosion of flavors like apple, tomato, soy sauce, and onion. It's great to drizzle on your favorite Japanese meals like okonomiyaki, takoyaki, and yakisoba, or even atop hamburgers! This vegan product also comes in a convenient squeeze bottle."
+    ),
+    Listing(
+       name="Ajishima Furikake Rice Seasoning: Seto Fumi",
+       user_id=10,
+       price=4.25,
+       category="condiments",
+       description="Is your bowl of rice a little...bland? Put down that soy sauce! Meet furikake: a sweet-salty-umami blend of crunchy seaweed bits, sesame seeds, bonito flakes, salt, and tasty spices. Fish and seaweed are bringing the umami to this party, so invite your seafood-loving friends! Sprinkle it for presentation or taste. Just make sure it's after your rice is plated."
+    ),
+    Listing(
+       name="JL Toasted White Sesame Seeds",
+       user_id=10,
+       price=5.99,
+       category="condiments",
+       description="Meet the nuttier, more flavorful brother of sesame seeds! This toasted version provides a delightful crunch to recipes that regular white sesame seeds lack. This seasoning is versatile. You can use sesame seeds as a topping for tofu, rice, bagels, and buns. Or, grind them up and make homemade tahini for salad dressing."
+    ),
+    Listing(
+       name="Ajinomoto Hondashi Soup Stock",
+       user_id=10,
+       price=4.99,
+       category="condiments",
+       description="This amazing powder will help you create flavorful hondashi (real broth), the backbone of many Japanese soups and stews like miso soup, oden, shabu shabu, and ramen. It's even mixed into meals like takoyaki and okonomiyaki. But dashi isn't limited to Asian cuisine: you can add this savory powder to just about anything needing a punch of umami.  We can't wait to see what you cook up with instant dashi."
     ),
 
   ]
