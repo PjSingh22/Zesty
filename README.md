@@ -21,6 +21,32 @@ This is the starter for the Flask React project.
 ## My Thoughts
 working on this capstone project was pretty fun. It seemed daunting at first with all the features and coming up with how to implement them. Slowly it came along and I had a lot of fun tackling all the problems that came about. Working with Flask for the back end was really nice since Flask makes creating routes and serving assets really easy. Once I got the hang of redux then creating stores and manipulating what is returned was pretty easy. The styling of the application was cool since I got to play around with many different CSS properties that I didn't have much experience with before. Overall I liked that I also went above and beyond and added extra features such as search functionality and liking listings to save to your favorites page.
 
+## Endpoints
+| Request | Purpose | Return Value 
+--------- | ------- | ----------- 
+GET /api/auth/ | Fetches the current logged in user or returns null | { id: int, username: STRING, email: STRING } |
+POST /api/auth/login | Logs in user | { id: int, username: STRING, email: STRING } |
+GET /api/auth/logout | Logsout user | {'message': 'User logged out'} |
+POST /api/auth/signup | Signs up user | { id: int, username: STRING, email: STRING } |
+GET /api/likes/ | get likes of a post | { user_id: INT, listing_id: INT, totalReviews: INT, avgReviews: INT, owner: user obj, images: ARRAY }
+POST /api/likes/listing/:id | add like to listing | { "message": "listing added to likes" }
+DELETE /api/likes/listing/:id | remove like from listing | { "message": "listing removed from likes" }
+GET /api/listings | get all listings | { id: INT, name: STRING, userId: INT, price: INT, category: STRING, description: STRING, totalReviews: INT, avgRating: INT, owner: user, images: ARRAY }
+GET /api/listings/search | get listings that match query | { id: INT, name: STRING, userId: INT, price: INT, category: STRING, description: STRING, totalReviews: INT, avgRating: INT, owner: user, images: ARRAY }
+POST /api/listings/new | create a new listing | { id: INT, name: STRING, userId: INT, price: INT, category: STRING, description: STRING, totalReviews: INT, avgRating: INT, owner: user, images: ARRAY }
+GET /api/listings/:id | get listing | { id: INT, name: STRING, userId: INT, price: INT, category: STRING, description: STRING, totalReviews: INT, avgRating: INT, owner: user, images: ARRAY }
+PUT /api/listings/:id | update listing | { id: INT, name: STRING, userId: INT, price: INT, category: STRING, description: STRING, totalReviews: INT, avgRating: INT, owner: user, images: ARRAY }
+DELETE /api/listings/:id | delete a listing | {"message": "Listing successfully deleted"}
+POST /api/reviews/:id | create a review for a listing | { context: STRING, rating: INT, user_id: INT, listing_id: INT }
+PUT /api/reviews/:id | update a review | { context: STRING, rating: INT, user_id: INT, listing_id: INT }
+DELETE /api/reviews/:id | delete a review | { "message": "Review succesfully deleted" }
+
+ 
+
+
+
+
+
 
 ## Getting started
 1. Clone this repository (only this branch)
