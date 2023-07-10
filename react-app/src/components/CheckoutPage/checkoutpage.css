@@ -37,6 +37,15 @@
   border-radius: 5px;
 }
 
+.cart-items > button {
+  padding: 10px;
+  background-color: rgb(252, 68, 68);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: fit-content;
+}
+
 .empty-msg {
   display: flex;
   flex-direction: column;

@@ -17,7 +17,11 @@ function CheckoutPage() {
     await dispatch(cleanUpCartThunk())
     localStorage.setItem(`cart_${user ? user.id : 0}`, JSON.stringify([]));
     history.push("/thanks")
-    // return alert("Thank you for your purchase!")
+  }
+
+  const clearCart = async () => {
+    await dispatch(cleanUpCartThunk())
+    localStorage.setItem(`cart_${user ? user.id : 0}`, JSON.stringify([]));
   }
 
   const cartTotal = (cartItems) => {
@@ -45,7 +49,9 @@ function CheckoutPage() {
   return (
     <div className="checkout-container">
       <div className="cart-items">
+        <p>test</p>
         <p className="cart-amount">{cartItems.length} {cartItems.length === 1? "item" : "items"} in your cart.</p>
+        <button onClick={clearCart} className="clear-cart">Clear Cart</button>
         {cartItems?.map(item => {
           return <Cartitem cartItem={item} key={item.id} />
         })}
