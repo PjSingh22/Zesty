@@ -52,6 +52,3 @@
   font-size: 15px;
   text-decoration: underline;
 }
-.cartItem-details > button::before {
-  content: "X ";
-}
