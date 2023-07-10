@@ -14,6 +14,7 @@ import { populateCartThunk } from "./store/cart";
 import CheckoutPage from "./components/CheckoutPage";
 import ThankYouPage from "./components/ThankYouPage";
 import LikesPage from "./components/LikesPage";
+import ErrorPage from "./components/404Page";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ function App() {
           <Route path="/signup">
             <h1>Use the modal, that's what it's there for.</h1>
           </Route>
+          <ErrorPage />
         </Switch>
       )}
     </div>
