@@ -49,7 +49,6 @@ function CheckoutPage() {
   return (
     <div className="checkout-container">
       <div className="cart-items">
-        <p>test</p>
         <p className="cart-amount">{cartItems.length} {cartItems.length === 1? "item" : "items"} in your cart.</p>
         <button onClick={clearCart} className="clear-cart">Clear Cart</button>
         {cartItems?.map(item => {
