@@ -27,6 +27,11 @@ const deleteReview = (listingId, id) => ({
   }
 })
 
+const findListings = (listings) => ({
+  type: FIND_LISTINGS,
+  payload: listings
+})
+
 const deleteListing = (listing) => ({
   type: DELETE_LISTING,
   payload: listing
@@ -117,7 +122,7 @@ export const findListingsThunk = (searchQuery) => async dispatch => {
 
   if (res.ok) {
     const data = await res.json()
-    await dispatch(getAllListings(data));
+    await dispatch(findListings(data));
   }
 }
 
@@ -193,10 +198,14 @@ export const createListingThunk = (listing) => async dispatch => {
   }
 };
 
-const initialState = { listings: {}, singleListing: {} };
+const initialState = { listings: {}, singleListing: {}, searchResults: {} };
 
 const listingReducer = (state = initialState, action) => {
   switch(action.type) {
+    case FIND_LISTINGS:
+      const searchResults = { ...state, searchResults: {} }
+      action.payload.forEach(listing => searchResults.searchResults[listing.id] = listing);
+      return searchResults;
     case GET_LISTINGS:
       const allListings = { listings: {} }
       action.payload.forEach(listing => allListings.listings[listing.id] = listing);
