@@ -1,0 +1,10 @@
+.search-page {
+    display: flex;
+    justify-content: center;
+}
+
+.search-results {
+    display: flex;
+    gap: 20px;
+    margin-top: 50px;
+}
