@@ -6,6 +6,7 @@ import ListingCard from "../ListingCard";
 import { populateCartThunk } from "../../store/cart";
 import "./homepage.css";
 import { getLikesThunk } from "../../store/likes";
+import logo from "../Navigation/logo-no-background.png"
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -26,7 +27,12 @@ function HomePage() {
   }, [dispatch])
 
 
-  if (!listings) return null;
+   if (!listings) return (
+    <div className="loading-sprite">
+      <img src={logo} alt="logo" />
+      <h1>Snacks Loading...</h1>
+    </div>
+  );
   return (
     <div className="home-page-container">
       <div className="home-page__banner">
