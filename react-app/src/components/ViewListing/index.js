@@ -54,6 +54,7 @@ function ViewListing() {
     }
 
     await dispatch(addItemThunk(item, user ? user.id : 0))
+    return alert("Added to cart!")
   }
 
   if (!listing) return null
@@ -64,13 +65,13 @@ function ViewListing() {
           <Carousel images={listing.images} />
         </div>
         <div className="view-listing-info">
-          <p className="info info-price">${listing?.price}</p>
-          <p className="info info-name">{listing?.name}</p>
+          <p className="info info-price">${listing.price}</p>
+          <p className="info info-name">{listing.name}</p>
           <p className="info info-shipping">Free shipping 😉</p>
-          <p className="info info-owner">{listing?.owner?.username}</p>
-          <p className="info info-cat">Category: {listing?.category}</p>
+          <p className="info info-owner">{listing.owner?.username}</p>
+          <p className="info info-cat">Category: {listing.category}</p>
           <button onClick={addToCart}>{buttonText}</button>
-          <p className="info info-desc">{listing?.description}</p>
+          <p className="info info-desc">{listing.description}</p>
         </div>
         </div>
         <div className="view-listings__reviews">
