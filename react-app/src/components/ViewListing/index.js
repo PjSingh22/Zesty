@@ -57,7 +57,7 @@ function ViewListing() {
     return alert("Added to cart!")
   }
 
-  if (!listing) return null
+  if (!listing) return <h1>something went wrong 😭</h1>
   return (
     <div className="view-listing-container">
       <div className="view-listing__other">
