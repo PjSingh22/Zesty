@@ -15,6 +15,7 @@ import CheckoutPage from "./components/CheckoutPage";
 import ThankYouPage from "./components/ThankYouPage";
 import LikesPage from "./components/LikesPage";
 import ErrorPage from "./components/404Page";
+import SearchResult from "./components/SearchResult";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <HomePage />
+          </Route>
+          <Route path='/search'>
+            <SearchResult />
           </Route>
           <Route path="/thanks">
             <ThankYouPage />

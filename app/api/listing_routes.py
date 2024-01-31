@@ -19,9 +19,17 @@ def listings():
         if not len(reviews):
             list_item["avgRating"] = 0
         else:
+            reviews_list = []
             for review in reviews:
                 total_ratings += review.rating
 
+            for review in reviews:
+              review_dict = review.to_dict()
+              reviewer = User.query.get(review_dict['userId'])
+              review_dict['username'] = reviewer.username
+              reviews_list.append(review_dict)
+
+            list_item["reviews"] = reviews_list
             list_item["avgRating"] = total_ratings / len(reviews)
 
         images = listing.images
@@ -48,8 +56,10 @@ def find_listings():
         if not len(reviews):
             list_item["avgRating"] = 0
         else:
+
             for review in reviews:
                 total_ratings += review.rating
+
 
             list_item["avgRating"] = total_ratings / len(reviews)
 

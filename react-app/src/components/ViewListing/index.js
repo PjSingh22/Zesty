@@ -10,6 +10,7 @@ import CreateReviewModal from "../CreateReviewModal";
 import { addItemThunk, populateCartThunk } from "../../store/cart";
 import StarRatings from 'react-star-ratings';
 import Carousel from "../Carousel";
+import ErrorPage from "../404Page";
 import "./viewlisting.css"
 
 function ViewListing() {
@@ -17,7 +18,9 @@ function ViewListing() {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
-  const listing = useSelector(state => state.listings.singleListing);
+  const listings = useSelector(state => state.listings.listings);
+  const singleListing = useSelector(state => state.listings.singleListing);
+  const listing = listings[id] || singleListing;
   const [buttonText, setButtonText] = useState("Add To Cart")
   // const images = useSelector(state => state.listings.singleListing.images)
   const images = listing?.images?.map(image => {
@@ -27,6 +30,8 @@ function ViewListing() {
       "subText": null
     }
   })
+
+  // console.log("listing", listings[id]);
 
   const dateConversion = (date) => {
     let split = date.split(" ");
@@ -54,9 +59,10 @@ function ViewListing() {
     }
 
     await dispatch(addItemThunk(item, user ? user.id : 0))
+    return alert("Added to cart!")
   }
 
-  if (!listing) return null
+  if (!listing) return <ErrorPage />
   return (
     <div className="view-listing-container">
       <div className="view-listing__other">
@@ -64,13 +70,13 @@ function ViewListing() {
           <Carousel images={listing.images} />
         </div>
         <div className="view-listing-info">
-          <p className="info info-price">${listing?.price}</p>
-          <p className="info info-name">{listing?.name}</p>
+          <p className="info info-price">${listing.price}</p>
+          <p className="info info-name">{listing.name}</p>
           <p className="info info-shipping">Free shipping 😉</p>
-          <p className="info info-owner">{listing?.owner?.username}</p>
-          <p className="info info-cat">Category: {listing?.category}</p>
+          <p className="info info-owner">{listing.owner?.username}</p>
+          <p className="info info-cat">Category: {listing.category}</p>
           <button onClick={addToCart}>{buttonText}</button>
-          <p className="info info-desc">{listing?.description}</p>
+          <p className="info info-desc">{listing.description}</p>
         </div>
         </div>
         <div className="view-listings__reviews">

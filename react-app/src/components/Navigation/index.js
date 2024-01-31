@@ -18,13 +18,13 @@ function Navigation({ isLoaded }){
     e.preventDefault();
 
     if (search) {
-      dispatch(findListingsThunk(search))
+      await dispatch(findListingsThunk(search))
+      history.push('/search');
     }
     setSearch("");
   }
 	return (
     <div className='nav-container'>
-
       <div className='nav-bar'>
         <div>
           <NavLink exact to="/"><div onClick={() => dispatch(getAllListingsThunk())} className='logo'></div></NavLink>
@@ -32,7 +32,7 @@ function Navigation({ isLoaded }){
         <div>
           <form>
             <label className='search-bar'>
-              <input className="search-thing" onChange={e => setSearch(e.target.value)} type='search' placeholder='Search for anything'></input>
+              <input value={search} className="search-thing" onChange={e => setSearch(e.target.value)} type='search' placeholder='Search for anything'></input>
               <div className='search-icon'>
                 <button onClick={handleSearch} value={search} className='search-btn' type='submit'><i className="fas fa-search fa-lg"></i></button>
               </div>
