@@ -30,23 +30,32 @@ function Cartitem({ cartItem }) {
     }
   }
 
+  console.log("Images", images)
+
   return (
-    <div className="cartItem-container">
-      <Link to={`/listings/view/${cartItem.id}`}><div className="cartItem-image" style={{backgroundImage: `url(${images[0].imageUrl})`}}></div></Link>
-      <div className="cartItem-details">
-        <Link to={`/listings/view/${cartItem.id}`}>
-          <p>{name}</p>
-        </Link>
-        <div className='cartItem-quantity'>
-          <button onClick={decrement}>{`<`}</button>
-          <p>{count}</p>
-          <button onClick={increment}>{`>`}</button>
-        </div>
-        <button onClick={removeItem}>Remove Item</button>
+  <div className="cartItem-container">
+    <Link to={`/listings/view/${cartItem.id}`}>
+      <div
+        className="cartItem-image"
+        style={{
+          backgroundImage: `url(${images?.[0]?.image_url || images?.[0]?.imageUrl || '/images/default.png'})`
+        }}
+      ></div>
+    </Link>
+    <div className="cartItem-details">
+      <Link to={`/listings/view/${cartItem.id}`}>
+        <p>{name}</p>
+      </Link>
+      <div className='cartItem-quantity'>
+        <button onClick={decrement}>&lt;</button>
+        <p>{count}</p>
+        <button onClick={increment}>&gt;</button>
       </div>
-      <p className="cartItem-price">${price}</p>
+      <button onClick={removeItem}>Remove Item</button>
     </div>
-  )
+    <p className="cartItem-price">${price}</p>
+  </div>
+);
 }
 
 export default Cartitem;

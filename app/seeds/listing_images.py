@@ -7,19 +7,19 @@ def seed_listing_images():
    listing_images = [
     ListingImage(
       listing_id= 1,
-      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118276901073600555/image.png"
+      image_url = "/images/lays-front.png"
     ),
     ListingImage(
       listing_id= 1,
-      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118277228254461953/12-1_fea8a953-ae9a-4fd0-b6b4-22ec14aa722b.png"
+      image_url = "/images/lays-1-nutrition.png"
     ),
     ListingImage(
       listing_id= 1,
-      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118278327791267860/images.jpg"
+      image_url = "/images/lays-beef-chips.png"
     ),
     ListingImage(
       listing_id= 1,
-      image_url = "https://cdn.discordapp.com/attachments/1118265667246882867/1118278465175695430/s-l400.png"
+      image_url = "/images/lays-beef-store.png"
     ),
     ListingImage(
       listing_id= 2,
